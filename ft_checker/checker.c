@@ -94,7 +94,7 @@ int		main(int argc, char **argv)
 	b = NULL;
 	if (check_order(a, b))
 		return (1);
-	commands = get_commands(&a, &b, argc);
+	commands = get_commands(&a, &b, argc - 1);
 //	print_cmd(commands);
 	return (0);
 }
