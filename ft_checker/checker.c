@@ -85,7 +85,8 @@ int		check(int argc, char **argv)
 int		main(int argc, char **argv)
 {
 	t_stack	*a;
-	t_stack *b;
+	t_stack	*b;
+	char	**commands;
 
 	if (argc == 1)
 		put_errmsg_and_exit('d');
@@ -93,6 +94,7 @@ int		main(int argc, char **argv)
 	b = NULL;
 	if (check_order(a, b))
 		return (1);
-
+	commands = get_commands(&a, &b, argc);
+//	print_cmd(commands);
 	return (0);
 }

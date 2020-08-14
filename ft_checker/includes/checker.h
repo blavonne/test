@@ -12,7 +12,6 @@ typedef struct		s_stack
 {
 	int				value;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 }					t_stack;
 
 typedef struct		bigint
@@ -37,4 +36,6 @@ void				clean_exit(t_stack **stack, char type);
 
 void				print(t_stack *a, t_stack *b);
 int					check(int argc, char **argv);
+char				**get_commands(t_stack **a, t_stack **b, int argc);
+int					*timesort(int *arr);
 #endif

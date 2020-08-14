@@ -13,7 +13,6 @@ void		push_in_stack(t_stack **stack, t_stack *next)
 	while (ptr->next)
 		ptr = ptr->next;
 	ptr->next = next;
-	next->prev = ptr;
 }
 
 t_stack		*create_elem(void)
@@ -24,7 +23,6 @@ t_stack		*create_elem(void)
 		return (NULL);
 	elem->value = 0;
 	elem->next = NULL;
-	elem->prev = NULL;
 	return (elem);
 }
 
