@@ -21,8 +21,8 @@ static int	*get_arr(t_stack **a, int size)
 
 static int	get_middle(int *arr, int size)
 {
-	if ((arr = timesort(arr, size)))
-		return (arr[size - 1]);
+	if ((arr = timsort(arr, size)))
+		return (arr[size / 2]);
 	else
 		return (-1);
 }
@@ -38,5 +38,6 @@ char		**get_commands(t_stack **a, t_stack **b, int size)
 	middle_val = get_middle(arr, size);
 	if (middle_val == -1)
 		clean_exit(a, 'm');
+	ft_printf("Middle is = %d\n", middle_val);
 	return (NULL);
 }

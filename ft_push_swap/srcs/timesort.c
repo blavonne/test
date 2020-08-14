@@ -1,10 +1,11 @@
 #include "checker.h"
 
 /*
-** minrun
-** берём старшие 6 бит из N и добавляем единицу,
-** если в оставшихся младших битах есть хотя бы один ненулевой.
+** ========MINRUN========
+** get 6 highest bits of N (64 for int64) and add 1 if there is at least one
+** not zeroed element in lowest bits
 */
+
 static int		get_minrun(int size)
 {
 	int r;
@@ -17,6 +18,12 @@ static int		get_minrun(int size)
 	}
 	return (size + r);
 }
+
+/*
+** ========INITIALIZE_MAP========
+** map contains pairs "index minrun-begin - minrun-size"
+** map always contains more than necessary zeroed elements
+*/
 
 static t_map	*initialize_map(int size, int minrun)
 {
@@ -42,6 +49,11 @@ static t_map	*initialize_map(int size, int minrun)
 	return (map);
 }
 
+/*
+** ========INSERTION_SORT========
+** swap current element with previous until they are wrong located
+*/
+
 int				*insertion_sort(int *arr, int begin, int end)
 {
 	int		x;
@@ -66,6 +78,17 @@ int				*insertion_sort(int *arr, int begin, int end)
 	return (arr);
 }
 
+/*
+** ==========MERGE_SORT==========
+** in this func we create temp-array and copy left-array (x) in temp
+** in memory wa have x[0]x[1]...x[x_size - 1]y[0]y[1]...y[y_size - 1]
+** so we compare temp-value with y-value and put the smallest into x-array
+** until one of y-array or temp-array is off
+** then we copy into x-array the other values of array, which is not off
+** do not forget to free temp!
+** now x+y-array is sorted
+*/
+
 int				*merge_sort(int *x, int *y, int x_size, int y_size)
 {
 	int		*temp;
@@ -80,12 +103,10 @@ int				*merge_sort(int *x, int *y, int x_size, int y_size)
 		return (NULL);
 	temp = ft_memcpy(temp, x, sizeof(int) * x_size);
 	while (i < x_size && j < y_size)
-	{
 		if (temp[i] < y[j])
 			x[k++] = temp[i++];
 		else
 			x[k++] = y[j++];
-	}
 	if (i == x_size)
 		while (j < y_size)
 			x[k++] = y[j++];
@@ -95,6 +116,12 @@ int				*merge_sort(int *x, int *y, int x_size, int y_size)
 	free(temp);
 	return (x);
 }
+
+/*
+** ==========MERGE2==========
+** in this func we run to merge a pair of minruns, which are sequentially
+** located in memory and after this we update map
+*/
 
 int				*merge2(int *arr, t_map **map, int left, int right)
 {
@@ -119,26 +146,31 @@ int				*merge2(int *arr, t_map **map, int left, int right)
 	return (arr);
 }
 
-int				*merge(int *arr, t_map **map, int size)
+/*
+** ==========MERGE==========
+** map = pairs of begin_minrun_index + minrun_size, x, y, z = minrun's_size
+** x - the first pair, y - the second, z - the third
+** we should merge +- equal by size arrays (minruns) at first
+** also they must be only neighbours
+** we can not merge, if X > Y + Z && Y > Z
+** in this function we choose pair minruns to merge
+*/
+
+static int		*merge(int *arr, t_map **map, int size)
 {
 	int		i;
 	int		x;
 	int		y;
 	int		z;
 
-	i = 1;//Y
-	x = (*map)->size[i - 1] ? (*map)->size[i - 1] : 0;
-	y = x && (*map)->size[i] ? (*map)->size[i] : 0;
-	z = y && (*map)->size[i + 1] ? (*map)->size[i + 1] : 0;
+	i = 1;
 	while ((*map)->size[1])
 	{
+		x = (*map)->size[i - 1] ? (*map)->size[i - 1] : 0;
+		y = x && (*map)->size[i] ? (*map)->size[i] : 0;
+		z = y && (*map)->size[i + 1] ? (*map)->size[i + 1] : 0;
 		while (x && y && z && (x > y + z) && (y > z) && (i + 1 < size))
-		{
-			i++;//нашла подмассив i, который можно мёрджить	X > Y + Z, Y > Z
-			x = (*map)->size[i - 1];
-			y = (*map)->size[i];
-			z = (*map)->size[i + 1];
-		}
+			i++;
 		if (x && z && x > z)
 			arr = merge2(arr, map, i, i + 1);
 		else if (x && !z || x <= z)
@@ -185,7 +217,7 @@ void			check_ord(int *arr, int size)
 	ft_printf("OK\n");
 }
 
-int				*timesort(int *arr, int size)
+int				*timsort(int *arr, int size)
 {
 	t_map	*map;
 	int		minrun;
@@ -209,13 +241,11 @@ int				*timesort(int *arr, int size)
 			while (end + 1 < size && end + 1 < minrun && arr[end] >\
 			arr[end + 1])
 				end++;
-		// end указывает на первый не отсортированный элемент
 		if (end - begin + 1 < minrun)
 		{
 			end = minrun - 1 + begin;
 			end == size ? end-- : 0;
 			arr = insertion_sort(arr, begin, end);
-			print_arr(arr, size);
 		}
 		map->begin[i] = begin;
 		map->size[i] = end - begin + 1;
@@ -225,8 +255,7 @@ int				*timesort(int *arr, int size)
 	}
 	if (!(arr = merge(arr, &map, size)))
 		return (NULL);
-	print_arr(arr, size);
-	check_ord(arr, size);
-	// end указывает на последний отсортиванный элемент или на конец минран
+	print_arr(arr, size);//потом убрать
+	check_ord(arr, size);//убрать потом
 	return (arr);
 }

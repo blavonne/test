@@ -43,5 +43,5 @@ void				clean_exit(t_stack **stack, char type);
 void				print(t_stack *a, t_stack *b);
 int					check(int argc, char **argv);
 char				**get_commands(t_stack **a, t_stack **b, int argc);
-int					*timesort(int *arr, int size);
+int					*timsort(int *arr, int size);
 #endif
