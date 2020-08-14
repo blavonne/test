@@ -10,7 +10,7 @@ static int	*get_arr(t_stack **a, int size)
 		clean_exit(a, 'm');
 	i = 0;
 	ptr = (*a);
-	while (arr && i < size)
+	while (ptr && i < size)
 	{
 		arr[i] = ptr->value;
 		ptr = ptr->next;
@@ -21,8 +21,10 @@ static int	*get_arr(t_stack **a, int size)
 
 static int	get_middle(int *arr, int size)
 {
-	arr = timesort(arr);
-	return (arr[size - 1]);
+	if ((arr = timesort(arr, size)))
+		return (arr[size - 1]);
+	else
+		return (-1);
 }
 
 char		**get_commands(t_stack **a, t_stack **b, int size)
@@ -34,5 +36,7 @@ char		**get_commands(t_stack **a, t_stack **b, int size)
 
 	arr = get_arr(a, size);
 	middle_val = get_middle(arr, size);
-
+	if (middle_val == -1)
+		clean_exit(a, 'm');
+	return (NULL);
 }
