@@ -257,5 +257,8 @@ int				*timsort(int *arr, int size)
 		return (NULL);
 	print_arr(arr, size);//потом убрать
 	check_ord(arr, size);//убрать потом
+	free(map->size);
+	free(map->begin);
+	free(map);
 	return (arr);
 }

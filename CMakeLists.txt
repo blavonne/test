@@ -16,6 +16,6 @@ add_executable(checker
         ft_checker/srcs/bigint_base.c
         ft_checker/srcs/commander.c
         ft_checker/srcs/stack_handler.c
-        ft_push_swap/srcs/timesort.c
+        ft_push_swap/srcs/timsort.c
         ft_push_swap/srcs/get_commands.c)
 target_link_libraries(checker libft ftprintf)

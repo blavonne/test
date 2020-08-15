@@ -39,5 +39,6 @@ char		**get_commands(t_stack **a, t_stack **b, int size)
 	if (middle_val == -1)
 		clean_exit(a, 'm');
 	ft_printf("Middle is = %d\n", middle_val);
+	free(arr);
 	return (NULL);
 }

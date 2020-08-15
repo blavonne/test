@@ -93,8 +93,14 @@ int		main(int argc, char **argv)
 	a = read_argv(argc, argv);
 	b = NULL;
 	if (check_order(a, b))
-		return (1);
+	{
+		destroy_stack(&a);
+		destroy_stack(&b);
+		return (69);
+	}
 	commands = get_commands(&a, &b, argc - 1);
 //	print_cmd(commands);
+	print(a, b);
+	destroy_stack(&a);
 	return (0);
 }
