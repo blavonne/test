@@ -164,7 +164,7 @@ static int		*merge(int *arr, t_map **map, int size)
 	int		z;
 
 	i = 1;
-	while ((*map)->size[1])
+	while ((*map)->size[i])
 	{
 		x = (*map)->size[i - 1] ? (*map)->size[i - 1] : 0;
 		y = x && (*map)->size[i] ? (*map)->size[i] : 0;
@@ -172,9 +172,15 @@ static int		*merge(int *arr, t_map **map, int size)
 		while (x && y && z && (x > y + z) && (y > z) && (i + 1 < size))
 			i++;
 		if (x && z && x > z)
+		{
 			arr = merge2(arr, map, i, i + 1);
+			i = 1;
+		}
 		else if (x && !z || x <= z)
+		{
 			arr = merge2(arr, map, i - 1, i);
+			i = 1;
+		}
 		if (!arr)
 			return (NULL);
 	}
