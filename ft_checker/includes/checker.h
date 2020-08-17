@@ -44,4 +44,7 @@ void				print(t_stack *a, t_stack *b);
 int					check(int argc, char **argv);
 char				**get_commands(t_stack **a, t_stack **b, int argc);
 int					*timsort(int *arr, int size);
+void				print_arr(int *arr, int size);
+void				check_ord(int *arr, int size);
+
 #endif
