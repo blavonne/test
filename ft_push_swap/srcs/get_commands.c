@@ -1,13 +1,13 @@
 #include "checker.h"
 
-static int	*get_arr(t_stack **a, int size)
+static int		*get_arr(t_stack **a, int size)
 {
 	t_stack	*ptr;
 	int		*arr;
 	int		i;
 
 	if (!(arr = (int *)malloc((sizeof(int) * size))))
-		clean_exit(a, 'm');
+		clean_and_exit(a, 0, 0, 'm');
 	i = 0;
 	ptr = (*a);
 	while (arr && ptr && i < size)
@@ -19,7 +19,7 @@ static int	*get_arr(t_stack **a, int size)
 	return (arr);
 }
 
-static int	get_middle(int *arr, int size)
+static int		get_middle(int *arr, int size)
 {
 	if ((arr = timsort(arr, size)))
 		return (arr[size / 2]);
@@ -27,7 +27,7 @@ static int	get_middle(int *arr, int size)
 		return (-1);
 }
 
-int			check_status(t_stack *a, int middle)
+int				check_mid(t_stack *a, int middle)
 {
 	while (a)
 	{
@@ -38,63 +38,80 @@ int			check_status(t_stack *a, int middle)
 	return (0);
 }
 
-char		**add_command(char ***cmd, char *action, t_stack **a, t_stack **b)
+int				set_size(t_stack *a)
 {
-	if (!(*cmd))
+	int		i;
+
+	i = 0;
+	while (a)
 	{
-		if (!((*cmd) = (char **)malloc(sizeof(char *) * (CMD_COUNT + 1))))
-		{
-			destroy_stack(a);
-			clean_exit(b, 'm');
-		}
-		(*cmd)[CMD_COUNT] = NULL;
+		i++;
+		a = a->next;
 	}
-	return (*cmd);
+	return (i);
 }
 
-char		**get_commands(t_stack **a, t_stack **b, int size)
+t_vectors		*get_commands(t_stack **a, t_stack **b, int size)
 {
-	char	**cmd;
-	int		middle_val;
-	int		*chunk;
-	int		*arr;
-	t_stack	*ptr;
+	int				middle_val;
+	int				*arr;
+	t_stack			*ptr;
+	t_vectors		*cmd;
 
-	arr = get_arr(a, size);
-	middle_val = get_middle(arr, size);
-	if (middle_val == -1)
-		clean_exit(a, 'm');
-	ft_printf("Middle is = %d\n", middle_val);
-	free(arr);
-	ptr = (*a);
-	cmd = NULL;
-	while (check_status((*a), middle_val))
+	if (!(cmd = create_vectors(VECTOR_SIZE)))
+		clean_and_exit(a, b, 0, 'm');
+	while ((*a) && (*a)->next && (*a)->next->next && !(check_order((*a), 0)))
 	{
-		while (ptr && ptr->value < middle_val)
-		{
-			run_command("pb", a, b);
-			cmd = add_command(&cmd, "pb", a, b);
-			ptr = (*a);
-		}
-		run_command("rra", a, b);
+		arr = get_arr(a, size);
+		middle_val = get_middle(arr, size);
+		free(arr);
+		if (middle_val == -1)
+			clean_and_exit(a, b, 0, 'm');
+		ft_printf("Middle is = %d\n", middle_val);
 		ptr = (*a);
-		while (ptr && ptr->value < middle_val)
+		while (check_mid((*a), middle_val))
 		{
-			run_command("pb", a, b);
-			cmd = add_command(&cmd, "pb", a, b);
+			while (ptr && ptr->value < middle_val)
+			{
+				run_command("pb", a, b);
+				if (!push_in_vector(&cmd->cmd, PB, sizeof(char)))
+					clean_and_exit(a, b, &cmd, 'm');
+				ptr = (*a);
+			}
+			ft_printf("This operation is default.\n");
 			run_command("rra", a, b);
-			cmd = add_command(&cmd, "rra", a, b);
 			ptr = (*a);
-		}
-		run_command("ra", a, b);
-		ptr = (*a);
-		while (ptr && check_status(*a, middle_val) && ptr->value >= middle_val)
-		{
+			while (ptr && ptr->value < middle_val)
+			{
+				if (!push_in_vector(&cmd->cmd, RRA, sizeof(char)))
+					clean_and_exit(a, b, &cmd, 'm');
+				run_command("pb", a, b);
+				if (!push_in_vector(&cmd->cmd, PB, sizeof(char)))
+					clean_and_exit(a, b, &cmd, 'm');
+				run_command("rra", a, b);
+				ptr = (*a);
+			}
+			ft_printf("This operation is default.\n");
 			run_command("ra", a, b);
-			cmd = add_command(&cmd, "ra", a, b);
 			ptr = (*a);
+			while (ptr && check_mid(*a, middle_val) && ptr->value >= middle_val)
+			{
+				run_command("ra", a, b);
+				if (!push_in_vector(&cmd->cmd, RA, sizeof(char)))
+					clean_and_exit(a, b, &cmd, 'm');
+				ptr = (*a);
+			}
 		}
+		ft_printf("====Result of moving in b-stack:====\n");
+		print(*a, *b);
+		size = set_size(*a);
 	}
-	print(*a, *b);
-	return (NULL);
+	if ((*a) && (*a)->next && !(*a)->next->next && (*a)->value >\
+		(*a)->next->value)
+	{
+		run_command("sa", a, b);
+		if (!push_in_vector(&cmd->cmd, SA, sizeof(char)))
+			clean_and_exit(a, b, &cmd, 'm');
+	}
+	return (cmd);
 }

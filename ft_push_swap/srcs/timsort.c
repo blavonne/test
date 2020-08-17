@@ -1,5 +1,28 @@
 #include "checker.h"
 
+static void			check_ord(int *arr, int size)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < size)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] >= arr[j])
+			{
+				ft_printf("KO\n");
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
+	ft_printf("OK\n");
+}
+
 /*
 ** ========MINRUN========
 ** get 6 highest bits of N (64 for int64) and add 1 if there is at least one
@@ -212,29 +235,6 @@ void			print_arr(int *arr, int size)
 	ft_printf("\n");
 }
 
-void			check_ord(int *arr, int size)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	while (i < size)
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (arr[i] >= arr[j])
-			{
-				ft_printf("KO\n");
-				return ;
-			}
-			j++;
-		}
-		i++;
-	}
-	ft_printf("OK\n");
-}
-
 int				*timsort(int *arr, int size)
 {
 	t_map	*map;
@@ -270,14 +270,17 @@ int				*timsort(int *arr, int size)
 		begin = end + 1;
 		end = begin + 1;
 	}
+	free(map->size);
+	free(map->begin);
+	free(map);
 	if (!(arr = merge(arr, &map, size)))
+	{
+		free(arr);
 		return (NULL);
+	}
 	ft_printf("Array after sort: ");
 	print_arr(arr, size);//потом убрать
 	ft_printf("Sort status: ");
 	check_ord(arr, size);//убрать потом
-	free(map->size);
-	free(map->begin);
-	free(map);
 	return (arr);
 }

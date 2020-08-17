@@ -17,5 +17,8 @@ add_executable(checker
         ft_checker/srcs/commander.c
         ft_checker/srcs/stack_handler.c
         ft_push_swap/srcs/timsort.c
-        ft_push_swap/srcs/get_commands.c)
+        ft_push_swap/srcs/get_commands.c
+        ft_push_swap/srcs/vector.c
+        ft_push_swap/srcs/cleaner.c
+        ft_push_swap/srcs/push_swap.c)
 target_link_libraries(checker libft ftprintf)

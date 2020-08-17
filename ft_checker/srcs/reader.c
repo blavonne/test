@@ -9,13 +9,13 @@ int					set_number(t_bigint *big, t_stack **stack)
 	res = 0;
 	big->length = set_len_big(big);
 	if (big->length == BIGINT_SIZE && big->bigint[big->length - 1] > 2)
-		clean_exit(stack, 'd');
+		clean_and_exit(stack, 0, 0, 'd');
 	while (i <= big->length)
 	{
 		if ((res == INT_MAX / 10 && ((big->sign != -1 && big->bigint[0] >\
 		INT_MAX % 10) || (big->sign == -1 && big->bigint[0] > INT_MIN % 10)))\
 		|| (res > INT_MAX / 10))
-			clean_exit(stack, 'd');
+			clean_and_exit(stack, 0, 0, 'd');
 		res *= 10;
 		res += big->bigint[big->length - i];
 		i++;
@@ -36,7 +36,7 @@ int					get_number(char *str, t_stack **stack)
 	i = (int)ft_strlen(str) - 1;
 	initialize_big(&big);
 	if (i > BIGINT_SIZE)
-		clean_exit(stack, 'd');
+		clean_and_exit(stack, 0, 0, 'd');
 	if (ft_issign(str[0]))
 		big.sign = (str[0] == '-') ? -1 : 1;
 	while (i >= 0 && ((ft_issign(str[0]) && j < BIGINT_SIZE + 1) ||\
@@ -46,7 +46,7 @@ int					get_number(char *str, t_stack **stack)
 			big.bigint[j++] = str[i] - 48;
 		else if (!ft_isdigit(str[i]) && !(i == 0 && (str[i] == '-' || str[i] ==\
 		'+')))
-			clean_exit(stack, 'd');
+			clean_and_exit(stack, 0, 0, 'd');
 		i--;
 	}
 	number = set_number(&big, stack);
@@ -66,18 +66,12 @@ void				check_duplicates(t_stack **stack)
 			while (cur)
 			{
 				if (cur->value == head->value)
-					clean_exit(stack, 'd');
+					clean_and_exit(stack, 0, 0, 'd');
 				cur = cur->next;
 			}
 		}
 		head = head->next;
 	}
-}
-
-void				clean_exit(t_stack **stack, char type)
-{
-	destroy_stack(stack);
-	put_errmsg_and_exit(type);
 }
 
 t_stack				*read_argv(int argc, char **argv)
@@ -91,7 +85,7 @@ t_stack				*read_argv(int argc, char **argv)
 	while (i++ < argc)
 	{
 		if (!(tmp = create_elem()))
-			clean_exit(&stack, 'm');
+			clean_and_exit(&stack, 0, 0, 'm');
 		push_in_stack(&stack, tmp);
 	}
 	i = 1;

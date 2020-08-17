@@ -25,21 +25,3 @@ t_stack		*create_elem(void)
 	elem->next = NULL;
 	return (elem);
 }
-
-void		destroy_stack(t_stack **stack)
-{
-	t_stack	*tmp;
-	t_stack	*ptr;
-
-	if ((*stack))
-	{
-		tmp = (*stack)->next;
-		while (tmp)
-		{
-			ptr = tmp->next;
-			free(tmp);
-			tmp = ptr;
-		}
-		free(*stack);
-	}
-}
