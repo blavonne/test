@@ -269,7 +269,6 @@ int				*timsort(int *arr, int size)
 		i++;
 		begin = end + 1;
 		end = begin + 1;
-		print_arr(arr, size);
 	}
 	if (!(arr = merge(arr, &map, size)))
 		return (NULL);

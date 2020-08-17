@@ -7,6 +7,7 @@
 # include <limits.h>
 
 # define BIGINT_SIZE	10
+# define CMD_COUNT		10
 
 typedef struct		s_stack
 {
