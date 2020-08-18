@@ -32,7 +32,7 @@ static int		set_size(t_stack *a)
 	return (i);
 }
 
-int		get_middle(t_stack **a)
+int				get_middle(t_stack **a)
 {
 	int		*arr;
 	int		middle;

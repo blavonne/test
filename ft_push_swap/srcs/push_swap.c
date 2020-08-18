@@ -39,7 +39,7 @@ int		main(int argc, char **argv)
 	}
 	info = get_commands(&a, &b);
 	ft_printf("Main status: ");
-	print(a, b);
+	print_stacks(a, b);
 	print_info(info);
 	clean_and_exit(&a, &b, &info, 0);
 	return (0);

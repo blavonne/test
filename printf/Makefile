@@ -3,7 +3,7 @@ NAME_E = printf
 FLAGS = -Wall -Werror -Wextra
 INCLUDES = ./includes/
 SRCSDIR = ./srcs/
-LIBFTDIR = ./libft/
+LIBFTDIR = ../libft/
 FLTDIR = ./floats/
 
 SRC =	$(FLTDIR)big_math_b2b.c\
@@ -16,6 +16,7 @@ SRC =	$(FLTDIR)big_math_b2b.c\
 		$(FLTDIR)integral_base.c\
 		$(FLTDIR)integral_creation.c\
 		$(FLTDIR)integral_to_str.c\
+		$(LIBFTDIR)errors.c\
 		$(LIBFTDIR)ft_abs.c\
 		$(LIBFTDIR)ft_bzero.c\
 		$(LIBFTDIR)ft_isdigit.c\
@@ -40,7 +41,6 @@ SRC =	$(FLTDIR)big_math_b2b.c\
 		$(SRCSDIR)chars_conversion.c\
 		$(SRCSDIR)chars_printing.c\
 		$(SRCSDIR)check_info.c\
-		$(SRCSDIR)errors.c\
 		$(SRCSDIR)float_conversion.c\
 		$(SRCSDIR)float_flags_cases.c\
 		$(SRCSDIR)float_get_arg.c\
@@ -61,21 +61,21 @@ SRC =	$(FLTDIR)big_math_b2b.c\
 
 OS = $(SRC:%.c=%.o)
 
-all: $(CHECKER)
+all: $(NAME)
 
-$(CHECKER): $(OS) $(INCLUDES)printf.h $(INCLUDES)fractional.h $(INCLUDES)xray.h\
+$(NAME): $(OS) $(INCLUDES)printf.h $(INCLUDES)fractional.h $(INCLUDES)xray.h\
 $(INCLUDES)integral.h
-	ar rcs $(CHECKER) $(OS)
+	ar rcs $(NAME) $(OS)
 %.o: %.c $(INCLUDES)printf.h $(INCLUDES)fractional.h $(INCLUDES)xray.h\
 $(INCLUDES)integral.h
 	gcc -c $< -o $@ -I $(INCLUDES) $(FLAGS)
 clean:
 	rm -rf $(OS)
 fclean: clean
-	rm -rf $(CHECKER)
+	rm -rf $(NAME)
 re: fclean all
 
-exe: $(CHECKER)
+exe: $(NAME)
 	gcc -c main.c
 	gcc $(OS) main.o -o $(NAME_E) -L -lfrprintf
 eclean: clean

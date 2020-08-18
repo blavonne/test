@@ -4,6 +4,7 @@ project(libft C)
 set(CMAKE_C_STANDARD 11)
 
 add_library(libft STATIC
+        errors.c
         ft_abs.c
         ft_atoi.c
         ft_bzero.c

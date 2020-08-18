@@ -14,6 +14,7 @@ add_library(ftprintf STATIC
         floats/integral_base.c
         floats/integral_creation.c
         floats/integral_to_str.c
+        libft/errors.c
         libft/ft_abs.c
         libft/ft_bzero.c
         libft/ft_isdigit.c
@@ -38,7 +39,6 @@ add_library(ftprintf STATIC
         srcs/chars_conversion.c
         srcs/chars_printing.c
         srcs/check_info.c
-        srcs/errors.c
         srcs/float_conversion.c
         srcs/float_flags_cases.c
         srcs/float_get_arg.c

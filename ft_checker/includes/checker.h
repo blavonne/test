@@ -39,6 +39,8 @@ typedef struct		s_stack
 
 typedef struct		s_map
 {
+	int				beg;
+	int				end;
 	int				*begin;
 	int				*size;
 }					t_map;
@@ -50,36 +52,37 @@ typedef struct		bigint
 	int				sign;
 }					t_bigint;
 
-void				put_errmsg_and_exit(char type);
 t_stack				*read_argv(int argc, char **argv);
-
 t_bigint			initialize_big(t_bigint *elephant);
 int					set_len_big(t_bigint *elephant);
 
 void				run_command(char *command, t_stack **a, t_stack **b);
+int					check_order(t_stack *a, t_stack *b);
 
 t_stack				*create_elem(void);
 void				push_in_stack(t_stack **stack, t_stack *next);
 
-void				print(t_stack *a, t_stack *b);
-int					check(int argc, char **argv);
+int					check(int argc, char **argv);//del
 t_vectors			*get_commands(t_stack **a, t_stack **b);
 int					*timsort(int *arr, int size);
-void				print_arr(int *arr, int size);
-int					check_order(t_stack *a, t_stack *b);
+int					*merge(int *arr, t_map **map);
+int					*insertion_sort(int *arr, t_map *map);
+
 
 t_vectors			*create_vectors(size_t size);
 int					push_in_vector(t_vector **v, int value, size_t size);
 
 void				clean_and_exit(t_stack **a, t_stack **b, t_vectors **v,\
 					char option);
-void				destroy_stack(t_stack **stack);
-void				destroy_vectors(t_vectors **v);
+void				destroy_map(t_map **map);
 
 void				all_to_b(t_stack **a, t_stack **b, t_vectors **info);
 int					check_mid(t_stack *a, int middle);
 int					get_middle(t_stack **a);
 
-void				print_info(t_vectors *info);
+void				print_info(t_vectors *info);//del
+void				check_ord(int *arr, int size);//del
+void				print_arr(int *arr, int size);//del
+void				print_stacks(t_stack *a, t_stack *b);//del
 
 #endif

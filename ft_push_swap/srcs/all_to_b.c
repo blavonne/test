@@ -88,7 +88,7 @@ void			all_to_b(t_stack **a, t_stack **b, t_vectors **info)
 {
 	int				middle_val;
 
-	print(*a, *b);
+	print_stacks(*a, *b);
 	while ((*a) && (*a)->next && (*a)->next->next && !(check_order((*a), 0)))
 	{
 		if ((middle_val = get_middle(a)) < 0)

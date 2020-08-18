@@ -94,5 +94,5 @@ void		run_command(char *command, t_stack **a, t_stack **b)
 		run_rr(b);
 	}
 	ft_printf("Commander. Operation [%s] is done.\n", command);
-	print(*a, *b);
+	print_stacks(*a, *b);
 }

@@ -1,6 +1,6 @@
 #include "checker.h"
 
-void		destroy_stack(t_stack **stack)
+static void	destroy_stack(t_stack **stack)
 {
 	t_stack	*tmp;
 	t_stack	*ptr;
@@ -18,7 +18,7 @@ void		destroy_stack(t_stack **stack)
 	}
 }
 
-void		destroy_vectors(t_vectors **v)
+static void	destroy_vectors(t_vectors **v)
 {
 	free((*v)->cmd->arr);
 	free((*v)->cmd);
@@ -36,3 +36,9 @@ void		clean_and_exit(t_stack **a, t_stack **b, t_vectors **v,\
 	put_errmsg_and_exit(option);
 }
 
+void		destroy_map(t_map **map)
+{
+	free((*map)->size);
+	free((*map)->begin);
+	free(*map);
+}
