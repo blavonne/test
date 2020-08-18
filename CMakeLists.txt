@@ -20,5 +20,7 @@ add_executable(checker
         ft_push_swap/srcs/get_commands.c
         ft_push_swap/srcs/vector.c
         ft_push_swap/srcs/cleaner.c
-        ft_push_swap/srcs/push_swap.c)
+        ft_push_swap/srcs/push_swap.c
+        ft_push_swap/srcs/all_to_b.c
+        ft_push_swap/srcs/middle_handler.c)
 target_link_libraries(checker libft ftprintf)

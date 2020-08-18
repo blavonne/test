@@ -37,8 +37,7 @@ int		main(int argc, char **argv)
 		clean_and_exit(&a, &b, 0, 0);
 		return (69);
 	}
-	info = get_commands(&a, &b, argc - 1);
-//	print_cmd(commands);
+	info = get_commands(&a, &b);
 	ft_printf("Main status: ");
 	print(a, b);
 	print_info(info);

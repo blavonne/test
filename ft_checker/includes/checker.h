@@ -8,6 +8,7 @@
 
 # define BIGINT_SIZE	10
 # define VECTOR_SIZE	150u
+
 # define RB		0b00000001u
 # define SA		0b00000010u
 # define SB		0b00000100u
@@ -62,7 +63,7 @@ void				push_in_stack(t_stack **stack, t_stack *next);
 
 void				print(t_stack *a, t_stack *b);
 int					check(int argc, char **argv);
-t_vectors			*get_commands(t_stack **a, t_stack **b, int argc);
+t_vectors			*get_commands(t_stack **a, t_stack **b);
 int					*timsort(int *arr, int size);
 void				print_arr(int *arr, int size);
 int					check_order(t_stack *a, t_stack *b);
@@ -74,5 +75,9 @@ void				clean_and_exit(t_stack **a, t_stack **b, t_vectors **v,\
 					char option);
 void				destroy_stack(t_stack **stack);
 void				destroy_vectors(t_vectors **v);
+
+void				all_to_b(t_stack **a, t_stack **b, t_vectors **info);
+int					check_mid(t_stack *a, int middle);
+int					get_middle(t_stack **a);
 
 #endif
