@@ -194,18 +194,12 @@ static int		*merge(int *arr, t_map **map)
 		z = y && (*map)->size[i + 1] ? (*map)->size[i + 1] : 0;
 		if (x && y && z && (x > y + z) && (y > z))
 			i++;
-		else if (x && z && x > z)
+		else if ((x && z && x > z) || (x && !z || x <= z))
 		{
-			arr = merge2(arr, map, i, i + 1);
+			arr = (x && z && x > z) ? merge2(arr, map, i, i + 1) :\
+			merge2(arr, map, i - 1, i);
 			ft_printf("Merge status: ");//delete
 			check_ord(&arr[(*map)->begin[i]], (*map)->size[i]);//delete
-			i = 1;
-		}
-		else if (x && !z || x <= z)
-		{
-			arr = merge2(arr, map, i - 1, i);
-			ft_printf("Merge status: ");//delete
-			check_ord(&arr[(*map)->begin[i - 1]], (*map)->size[i - 1]);//delete
 			i = 1;
 		}
 	}
