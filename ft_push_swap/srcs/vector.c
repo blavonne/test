@@ -2,16 +2,31 @@
 
 static int		resize(t_vector **v)
 {
-	void	*tmp;
+	void			*tmp;
 
 	if (!(tmp = malloc((*v)->size + VECTOR_SIZE)))
 		return (0);
+	ft_memset(tmp, 0, (*v)->size + VECTOR_SIZE);
+	tmp = ft_memcpy(tmp, (*v)->arr, (*v)->size);
 	(*v)->size += VECTOR_SIZE;
-	ft_memset(tmp, 0, (*v)->size);
-	tmp = ft_memcpy(&tmp, &(*v)->arr, (*v)->size);
 	free((*v)->arr);
 	(*v)->arr = tmp;
 	return (1);
+}
+
+void			print_vector(t_vector **v)
+{
+	int		i;
+	unsigned char	*arr;
+
+	i = 0;
+	arr = (*v)->arr;
+	while (i < (*v)->size)
+	{
+		ft_printf("%d ", arr[i]);
+		i++;
+	}
+	ft_printf("\n");
 }
 
 int				push_in_vector(t_vector **v, int value, size_t size)
@@ -21,7 +36,7 @@ int				push_in_vector(t_vector **v, int value, size_t size)
 	int				i;
 
 	i = (*v)->cur;
-	if (size * (*v)->cur + size > (*v)->size)
+	if (size * (*v)->cur + size >= (*v)->size)
 		if (!resize(v))
 			return (0);
 	if (size == sizeof(char))

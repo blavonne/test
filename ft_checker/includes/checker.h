@@ -7,7 +7,7 @@
 # include <limits.h>
 
 # define BIGINT_SIZE	10
-# define VECTOR_SIZE	150u
+# define VECTOR_SIZE	256u
 
 # define RB		0b00000001u
 # define SA		0b00000010u
@@ -20,8 +20,8 @@
 
 typedef struct		s_vector
 {
-	size_t			size;
 	void			*arr;
+	size_t			size;
 	int				cur;
 }					t_vector;
 
@@ -79,5 +79,7 @@ void				destroy_vectors(t_vectors **v);
 void				all_to_b(t_stack **a, t_stack **b, t_vectors **info);
 int					check_mid(t_stack *a, int middle);
 int					get_middle(t_stack **a);
+
+void				print_info(t_vectors *info);
 
 #endif

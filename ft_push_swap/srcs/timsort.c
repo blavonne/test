@@ -122,12 +122,6 @@ int				*merge_sort(int *x, int *y, int x_size, int y_size)
 	i = 0;
 	j = 0;
 	k = 0;
-
-//	ft_printf("===Merge sort===\n");
-//	ft_printf("x-array: ");
-//	print_arr(x, x_size);
-//	ft_printf("y-array: ");
-//	print_arr(y, y_size);
 	if (!(temp = (int *)malloc(sizeof(int) * x_size)))
 		return (NULL);
 	temp = ft_memcpy(temp, x, sizeof(int) * x_size);
@@ -163,8 +157,6 @@ int				*merge2(int *arr, t_map **map, int left, int right)
 	if (!(x = merge_sort(x, y, (*map)->size[left], (*map)->size[right])))
 		return (NULL);
 	(*map)->size[left] += (*map)->size[right];
-//	ft_printf("Merge res: ");
-//	print_arr(arr, (*map)->size[left]);
 	(*map)->size[right] = 0;
 	(*map)->begin[right] = 0;
 	i = right;
@@ -187,7 +179,7 @@ int				*merge2(int *arr, t_map **map, int left, int right)
 ** in this function we choose pair minruns to merge
 */
 
-static int		*merge(int *arr, t_map **map, int size)
+static int		*merge(int *arr, t_map **map)
 {
 	int		i;
 	int		x;
@@ -195,7 +187,7 @@ static int		*merge(int *arr, t_map **map, int size)
 	int		z;
 
 	i = 1;
-	while ((*map)->size[i])
+	while (arr && (*map)->size[i])
 	{
 		x = (*map)->size[i - 1] ? (*map)->size[i - 1] : 0;
 		y = x && (*map)->size[i] ? (*map)->size[i] : 0;
@@ -205,19 +197,17 @@ static int		*merge(int *arr, t_map **map, int size)
 		else if (x && z && x > z)
 		{
 			arr = merge2(arr, map, i, i + 1);
-			ft_printf("Merge status: ");
-			check_ord(&arr[(*map)->begin[i]], (*map)->size[i]);
+			ft_printf("Merge status: ");//delete
+			check_ord(&arr[(*map)->begin[i]], (*map)->size[i]);//delete
 			i = 1;
 		}
 		else if (x && !z || x <= z)
 		{
 			arr = merge2(arr, map, i - 1, i);
-			ft_printf("Merge status: ");
-			check_ord(&arr[(*map)->begin[i - 1]], (*map)->size[i - 1]);
+			ft_printf("Merge status: ");//delete
+			check_ord(&arr[(*map)->begin[i - 1]], (*map)->size[i - 1]);//delete
 			i = 1;
 		}
-		if (!arr)
-			return (NULL);
 	}
 	return (arr);
 }
@@ -270,14 +260,14 @@ int				*timsort(int *arr, int size)
 		begin = end + 1;
 		end = begin + 1;
 	}
-	free(map->size);
-	free(map->begin);
-	free(map);
-	if (!(arr = merge(arr, &map, size)))
+	if (!(arr = merge(arr, &map)))
 	{
 		free(arr);
 		return (NULL);
 	}
+	free(map->size);
+	free(map->begin);
+	free(map);
 	ft_printf("Array after sort: ");
 	print_arr(arr, size);//потом убрать
 	ft_printf("Sort status: ");

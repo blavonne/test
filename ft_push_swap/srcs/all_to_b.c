@@ -88,6 +88,7 @@ void			all_to_b(t_stack **a, t_stack **b, t_vectors **info)
 {
 	int				middle_val;
 
+	print(*a, *b);
 	while ((*a) && (*a)->next && (*a)->next->next && !(check_order((*a), 0)))
 	{
 		if ((middle_val = get_middle(a)) < 0)
@@ -103,6 +104,6 @@ void			all_to_b(t_stack **a, t_stack **b, t_vectors **info)
 			run_command("ra", a, b);
 			ra(a, b, info, middle_val);
 		}
+		sa(a, b, info);
 	}
-	sa(a, b, info);
 }
