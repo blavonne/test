@@ -67,7 +67,7 @@ int		check(int argc, char **argv)
 //{
 //	t_stack	*a;
 //	t_stack *b;
-//	char	*cmd;
+//	char	*cmd_c;
 //	int		count;
 //
 //	if (argc == 1)
@@ -75,14 +75,14 @@ int		check(int argc, char **argv)
 //	a = read_argv(argc, argv);
 //	b = NULL;
 //	print_stacks(a, b);
-//	while ((count = get_next_line(0, &cmd)))
+//	while ((count = get_next_line(0, &cmd_c)))
 //	{
-//		if (count < 0 || !check_command(cmd))
+//		if (count < 0 || !check_command(cmd_c))
 //			break ;
-//		run_command(cmd, &a, &b);
-//		free(cmd);
+//		run_command(cmd_c, &a, &b);
+//		free(cmd_c);
 //	}
-//	free(cmd);
+//	free(cmd_c);
 //	check_asc_order(a, b) ? ft_printf("OK\n") : ft_printf("KO\n");
 //	clean_and_exit(&a, &b, 0, 0);
 //	return (0);

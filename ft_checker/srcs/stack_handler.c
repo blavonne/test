@@ -15,7 +15,7 @@ void		push_in_stack(t_stack **stack, t_stack *next)
 	ptr->next = next;
 }
 
-t_stack		*create_elem(void)
+t_stack		*create_stack(void)
 {
 	t_stack		*elem;
 

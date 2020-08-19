@@ -5,7 +5,7 @@
 ** This func pushes numbers less than middle_val from top A to top B
 */
 
-static void		pb_forward(t_stack **a, t_stack **b, t_vectors **info,\
+static void		pb_forward(t_stack **a, t_stack **b, t_main **info,\
 		int middle_val)
 {
 	t_stack		*ptr;
@@ -14,7 +14,7 @@ static void		pb_forward(t_stack **a, t_stack **b, t_vectors **info,\
 	while (ptr && ptr->value < middle_val && !(ft_isslice((*a))))
 	{
 		run_command("pb", a, b);
-		if (!push_in_vector(&(*info)->cmd, PB, sizeof(char)))
+		if (!push_in_vector(&(*info)->cmd_c, PB, sizeof(char)))
 			clean_and_exit(a, b, info, 'm');
 		ptr = (*a);
 	}
@@ -25,7 +25,7 @@ static void		pb_forward(t_stack **a, t_stack **b, t_vectors **info,\
 ** This func pushes numbers less than middle_val from bottom A to top B
 */
 
-static void		pb_back(t_stack **a, t_stack **b, t_vectors **info,\
+static void		pb_back(t_stack **a, t_stack **b, t_main **info,\
 		int middle_val)
 {
 	t_stack		*ptr;
@@ -33,10 +33,10 @@ static void		pb_back(t_stack **a, t_stack **b, t_vectors **info,\
 	ptr = (*a);
 	while (ptr && ptr->value < middle_val && !(ft_isslice((*a))))
 	{
-		if (!push_in_vector(&(*info)->cmd, RRA, sizeof(char)))
+		if (!push_in_vector(&(*info)->cmd_c, RRA, sizeof(char)))
 			clean_and_exit(a, b, info, 'm');
 		run_command("pb", a, b);
-		if (!push_in_vector(&(*info)->cmd, PB, sizeof(char)))
+		if (!push_in_vector(&(*info)->cmd_c, PB, sizeof(char)))
 			clean_and_exit(a, b, info, 'm');
 		run_command("rra", a, b);
 		ptr = (*a);
@@ -48,13 +48,13 @@ static void		pb_back(t_stack **a, t_stack **b, t_vectors **info,\
 ** This func swaps numbers in A by ascending order if A contains 2 numbers only
 */
 
-static void		sa(t_stack **a, t_stack **b, t_vectors **info)
+static void		sa(t_stack **a, t_stack **b, t_main **info)
 {
 	if ((*a) && (*a)->next && !(*a)->next->next && (*a)->value >\
 		(*a)->next->value && !(ft_isslice((*a))))
 	{
 		run_command("sa", a, b);
-		if (!push_in_vector(&(*info)->cmd, SA, sizeof(char)))
+		if (!push_in_vector(&(*info)->cmd_c, SA, sizeof(char)))
 			clean_and_exit(a, b, info, 'm');
 	}
 }
@@ -64,7 +64,7 @@ static void		sa(t_stack **a, t_stack **b, t_vectors **info)
 ** This func rotates A till a-value is more or equal middle_val
 */
 
-static void		ra(t_stack **a, t_stack **b, t_vectors **info, int middle_val)
+static void		ra(t_stack **a, t_stack **b, t_main **info, int middle_val)
 {
 	t_stack *ptr;
 
@@ -73,7 +73,7 @@ static void		ra(t_stack **a, t_stack **b, t_vectors **info, int middle_val)
 	&& !(ft_isslice((*a))))
 	{
 		run_command("ra", a, b);
-		if (!push_in_vector(&(*info)->cmd, RA, sizeof(char)))
+		if (!push_in_vector(&(*info)->cmd_c, RA, sizeof(char)))
 			clean_and_exit(a, b, info, 'm');
 		ptr = (*a);
 	}
@@ -85,7 +85,7 @@ static void		ra(t_stack **a, t_stack **b, t_vectors **info, int middle_val)
 ** and other numbers puts in B
 */
 
-void			all_to_b(t_stack **a, t_stack **b, t_vectors **info)
+void			all_to_b(t_stack **a, t_stack **b, t_main **info)
 {
 	int				middle_val;
 

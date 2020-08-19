@@ -25,5 +25,7 @@ add_executable(checker
         ft_push_swap/srcs/timsort_merge.c
         ft_push_swap/srcs/insertion_sort.c
         ft_push_swap/srcs/ft_is_slice.c
-        ft_push_swap/srcs/check_order.c)
+        ft_push_swap/srcs/check_order.c
+        ft_push_swap/srcs/all_to_a.c
+        ft_push_swap/srcs/vector_arr.c ft_push_swap/srcs/main_struct.c)
 target_link_libraries(checker libft ftprintf)

@@ -84,7 +84,7 @@ t_stack				*read_argv(int argc, char **argv)
 	stack = NULL;
 	while (i++ < argc)
 	{
-		if (!(tmp = create_elem()))
+		if (!(tmp = create_stack()))
 			clean_and_exit(&stack, 0, 0, 'm');
 		push_in_stack(&stack, tmp);
 	}

@@ -1,14 +1,14 @@
 #include "checker.h"
 
-void	print_info(t_vectors *info)
+void	print_info(t_main *info)
 {
 	int				i;
 	unsigned char	*arr;
 
 	i = 0;
-	arr = info->cmd->arr;
+	arr = info->cmd_c->arr;
 	ft_printf("Command line:\n");
-	while (i < info->cmd->size)
+	while (i < info->cmd_c->size)
 	{
 		arr[i] == RB ? ft_printf("%s ", "rb") : 0;
 		arr[i] == RA ? ft_printf("%s ", "ra") : 0;
@@ -26,7 +26,7 @@ int		main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_vectors *info;
+	t_main *info;
 
 	if (argc == 1)
 		put_errmsg_and_exit('d');
