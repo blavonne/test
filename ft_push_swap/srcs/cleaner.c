@@ -1,6 +1,6 @@
 #include "checker.h"
 
-static void	destroy_stack(t_stack **stack)
+void		destroy_stack(t_stack **stack)
 {
 	t_stack	*tmp;
 	t_stack	*ptr;
@@ -18,17 +18,19 @@ static void	destroy_stack(t_stack **stack)
 	}
 }
 
+void		destroy_vector(t_vector **v)
+{
+	free((*v)->arr);
+	free(*v);
+}
+
 void		destroy_main(t_main **m)
 {
 	size_t		i;
 
 	i = 0;
-	if ((*m)->cmd_c)
-		free((*m)->cmd_c->arr);
-	free((*m)->cmd_c);
-	if ((*m)->count_steps_i)
-		free((*m)->count_steps_i->arr);
-	free((*m)->count_steps_i);
+	destroy_vector(&(*m)->cmd_c);
+	destroy_vector(&(*m)->count_steps_i);
 	if ((*m)->cmd_arr)
 		while (i < (*m)->arr_size)
 			free((*m)->cmd_arr[i++]);

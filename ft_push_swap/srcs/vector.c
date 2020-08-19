@@ -14,21 +14,6 @@ static int			resize(t_vector **v)
 	return (1);
 }
 
-void				print_vector(t_vector **v)
-{
-	int		i;
-	unsigned char	*arr;
-
-	i = 0;
-	arr = (*v)->arr;
-	while (i < (*v)->size)
-	{
-		ft_printf("%d ", arr[i]);
-		i++;
-	}
-	ft_printf("\n");
-}
-
 int					push_in_vector(t_vector **v, int value, size_t size)
 {
 	unsigned char	*cmd;
@@ -50,6 +35,25 @@ int					push_in_vector(t_vector **v, int value, size_t size)
 		arr = (*v)->arr;
 		arr[i] = value;
 		(*v)->next++;
+	}
+	return (1);
+}
+
+int					cat_vectors(t_vector **dest, t_vector *src)
+{
+	int				i;
+	unsigned char	*src_arr;
+
+	if (src && (*dest))
+	{
+		i = 0;
+		src_arr = src->arr;
+		while (i < src->next)
+		{
+			if (!(push_in_vector(dest, src_arr[i], sizeof(char))))
+				return (0);
+			i++;
+		}
 	}
 	return (1);
 }

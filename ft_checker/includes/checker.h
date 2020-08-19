@@ -33,7 +33,7 @@ typedef struct		s_vector
 typedef struct		s_main
 {
 	t_vector		*cmd_c;
-	t_vector		*count_steps_i;
+	t_vector		*count_steps_i;//cmd-arr-cur?
 	t_vector		**cmd_arr;
 	int				arr_size;
 }					t_main;
@@ -73,14 +73,8 @@ t_stack				*create_stack(void);
 void				push_in_stack(t_stack **stack, t_stack *next);
 
 int					check(int argc, char **argv);//del
-t_main				*get_commands(t_stack **a, t_stack **b);
-int					*timsort(int *arr, int size);
-int					*merge(int *arr, t_map **map);
-int					*insertion_sort(int *arr, t_map *map);
-
 
 t_main				*create_main_struct(void);
-void				destroy_main(t_main **m);
 t_vector			*create_vector(void);
 int					push_in_vector(t_vector **v, int value, size_t size);
 t_vector			**create_varr(void);
@@ -89,11 +83,22 @@ int					push_in_varr(t_main **m, t_vector *tmp);
 void				clean_and_exit(t_stack **a, t_stack **b, t_main **m,\
 					char option);
 void				destroy_map(t_map **map);
+void				destroy_main(t_main **m);
+void				destroy_vector(t_vector **v);
+void				destroy_stack(t_stack **stack);
 
 void				all_to_b(t_stack **a, t_stack **b, t_main **info);
 int					check_mid(t_stack *a, int middle);
 int					get_middle(t_stack **a);
-void				all_to_a(t_stack **a, t_stack **b, t_main **info);
+t_main				*get_commands(t_stack **a, t_stack **b);
+int					*timsort(int *arr, int size);
+int					*merge(int *arr, t_map **map);
+int					*insertion_sort(int *arr, t_map *map);
+void				all_to_a(t_stack **a, t_stack **b, t_main **m);
+t_vector			*ptr_to_top_b(t_stack *b, t_stack *ptr);
+int					ptr_to_a(t_stack *a, t_stack *ptr, t_vector **way);
+int					cat_vectors(t_vector **dest, t_vector *src);
+void				optimize_way(t_vector *way);
 
 void				print_info(t_main *info);//del
 void				check_ord(int *arr, int size);//del

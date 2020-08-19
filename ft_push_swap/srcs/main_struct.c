@@ -4,7 +4,6 @@ t_main			*create_main_struct()
 {
 	t_main	*root;
 
-	root = NULL;
 	if (!(root = (t_main *)malloc(sizeof(t_main))))
 		return (NULL);
 	root->cmd_arr = NULL;
@@ -25,5 +24,6 @@ t_main			*create_main_struct()
 		destroy_main(&root);
 		return (NULL);
 	}
+	root->arr_size = VARR_SIZE;
 	return (root);
 }

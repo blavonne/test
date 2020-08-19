@@ -1,46 +1,56 @@
 #include "checker.h"
 
-
-void			ptr_to_top_b(t_stack **b, t_stack *ptr, t_main **v)
+void			print_vector(t_vector *way)
 {
-	int		r_count;
-	int		rr_count;
 	int		i;
+	unsigned char	*arr;
 
 	i = 0;
-	r_count = try_r((*b), ptr);
-	rr_count = try_rr((*b), ptr);
-	if (r_count < rr_count)
-	{
-		push_in_vector(&(*v)->count_steps_i, r_count, sizeof(int));
-		
-	}
+	arr = way->arr;
+	ft_printf("====Vector command line is: ");
+	while (i < way->next)
+		ft_printf("%d ", arr[i++]);
+	ft_printf("\n");
 }
 
-int				set_steps(t_stack *a, t_stack *b, t_stack *ptr, t_main **v)
+int				set_steps(t_stack *a, t_stack *b, t_stack *ptr, t_main **m)
 {
 	t_vector	*way;
 
-	//1.вытолкнуть ptr наверх, записать это в cmd_arr
-	ptr_to_top_b(&b, ptr, v);
+	//1.вытолкнуть ptr наверх Б
+	if (!(way = ptr_to_top_b(b, ptr)))
+		return (0);
+	//2.найти место для ptr в А
+	if (!ptr_to_a(a, ptr, &way))
+		return (0);
+	//3.переместить в А
+	if (!push_in_vector(&way, PA, sizeof(char)))
+		return (0);
+	print_vector(way);
+//	optimize_way(way);
+	return (1);
 }
 
-void			all_to_a(t_stack **a, t_stack **b, t_main **info)
+void			all_to_a(t_stack **a, t_stack **b, t_main **m)
 {
 	t_stack	*ptr;
 	int		count;
 
 	count = 0;
 	ptr = (*b);
+	ft_printf("Initial statement:\n");
+	print_stacks(*a, *b);
 	while (ptr)
 	{
-		if (!set_steps((*a), (*b), ptr, info))
-			clean_and_exit(a, b, info, 'm');
+		if (!set_steps((*a), (*b), ptr, m))
+			clean_and_exit(a, b, m, 'm');
+		ft_printf("Stacks statement after set_steps:\n");
+		print_stacks(*a, *b);
 		ptr = ptr->next;
 	}
-	count = find_min_index((*info)->count_steps_i);
-	merge_commands(a, b, info, count);
-	if (b == NULL)
-		return ;
-	all_to_a(a, b, info);
+//	count = find_min_index((*m)->count_steps_i);
+//	merge_commands(a, b, m, count);
+//	if (b == NULL)
+//		return ;
+//	all_to_a(a, b, m);
 }
