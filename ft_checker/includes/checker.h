@@ -70,6 +70,7 @@ int					check_dsc_order(t_stack *a);
 int					ft_isslice(t_stack *a);
 
 t_stack				*create_stack(void);
+t_stack				*copy_stack(t_stack *src);
 void				push_in_stack(t_stack **stack, t_stack *next);
 
 int					check(int argc, char **argv);//del

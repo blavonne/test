@@ -12,7 +12,7 @@ static int		try_rb(t_stack *ptr, t_stack *b, t_vector **rb)
 	return (1);
 }
 
-static t_stack	*copy_stack(t_stack *src)
+t_stack			*copy_stack(t_stack *src)
 {
 	t_stack		*copy;
 	t_stack		*copy_head;
@@ -66,10 +66,6 @@ t_vector		*ptr_to_top_b(t_stack *b, t_stack *ptr)
 		return (NULL);
 	if (!(rrb = create_vector()))
 		return (NULL);
-	try_rb(ptr, b, &rb);
-	print_stacks(0, b);
-	try_rrb(ptr, b, &rrb);
-	print_stacks(0, b);
 	if (!try_rb(ptr, b, &rb) || !try_rrb(ptr, b, &rrb))
 	{
 		destroy_vector(&rb);
