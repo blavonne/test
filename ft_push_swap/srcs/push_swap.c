@@ -32,7 +32,7 @@ int		main(int argc, char **argv)
 		put_errmsg_and_exit('d');
 	a = read_argv(argc, argv);
 	b = NULL;
-	if (check_order(a, b))
+	if (check_asc_order(a, b))
 	{
 		clean_and_exit(&a, &b, 0, 0);
 		return (69);

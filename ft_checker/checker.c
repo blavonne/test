@@ -38,30 +38,6 @@ int		check_command(char *cmd)
 	return (0);
 }
 
-int		check_order(t_stack *a, t_stack *b)
-{
-	t_stack	*ptr;
-
-	if (b)
-		return (0);
-	else if (a)
-	{
-		ptr = a;
-		while (ptr->next)
-		{
-			a = ptr->next;
-			while (a)
-			{
-				if (a->value <= ptr->value)
-					return (0);
-				a = a->next;
-			}
-			ptr = ptr->next;
-		}
-	}
-	return (1);
-}
-
 int		check(int argc, char **argv)
 {
 	t_stack	*a;
@@ -82,7 +58,7 @@ int		check(int argc, char **argv)
 		free(cmd);
 	}
 	free(cmd);
-	check_order(a, b) ? ft_printf("OK\n") : ft_printf("KO\n");
+	check_asc_order(a, b) ? ft_printf("OK\n") : ft_printf("KO\n");
 	clean_and_exit(&a, &b, 0, 0);
 	return (0);
 }
@@ -107,7 +83,7 @@ int		check(int argc, char **argv)
 //		free(cmd);
 //	}
 //	free(cmd);
-//	check_order(a, b) ? ft_printf("OK\n") : ft_printf("KO\n");
+//	check_asc_order(a, b) ? ft_printf("OK\n") : ft_printf("KO\n");
 //	clean_and_exit(&a, &b, 0, 0);
 //	return (0);
 //}

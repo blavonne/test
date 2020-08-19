@@ -57,7 +57,10 @@ t_bigint			initialize_big(t_bigint *elephant);
 int					set_len_big(t_bigint *elephant);
 
 void				run_command(char *command, t_stack **a, t_stack **b);
-int					check_order(t_stack *a, t_stack *b);
+
+int					check_asc_order(t_stack *a, t_stack *b);
+int					check_dsc_order(t_stack *a);
+int					ft_isslice(t_stack *a);
 
 t_stack				*create_elem(void);
 void				push_in_stack(t_stack **stack, t_stack *next);

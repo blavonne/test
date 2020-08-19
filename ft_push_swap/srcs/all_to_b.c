@@ -11,7 +11,7 @@ static void		pb_forward(t_stack **a, t_stack **b, t_vectors **info,\
 	t_stack		*ptr;
 
 	ptr = (*a);
-	while (ptr && ptr->value < middle_val)
+	while (ptr && ptr->value < middle_val && !(ft_isslice((*a))))
 	{
 		run_command("pb", a, b);
 		if (!push_in_vector(&(*info)->cmd, PB, sizeof(char)))
@@ -31,7 +31,7 @@ static void		pb_back(t_stack **a, t_stack **b, t_vectors **info,\
 	t_stack		*ptr;
 
 	ptr = (*a);
-	while (ptr && ptr->value < middle_val)
+	while (ptr && ptr->value < middle_val && !(ft_isslice((*a))))
 	{
 		if (!push_in_vector(&(*info)->cmd, RRA, sizeof(char)))
 			clean_and_exit(a, b, info, 'm');
@@ -51,7 +51,7 @@ static void		pb_back(t_stack **a, t_stack **b, t_vectors **info,\
 static void		sa(t_stack **a, t_stack **b, t_vectors **info)
 {
 	if ((*a) && (*a)->next && !(*a)->next->next && (*a)->value >\
-		(*a)->next->value)
+		(*a)->next->value && !(ft_isslice((*a))))
 	{
 		run_command("sa", a, b);
 		if (!push_in_vector(&(*info)->cmd, SA, sizeof(char)))
@@ -69,7 +69,8 @@ static void		ra(t_stack **a, t_stack **b, t_vectors **info, int middle_val)
 	t_stack *ptr;
 
 	ptr = (*a);
-	while (ptr && check_mid(*a, middle_val) && ptr->value >= middle_val)
+	while (ptr && check_mid(*a, middle_val) && ptr->value >= middle_val\
+	&& !(ft_isslice((*a))))
 	{
 		run_command("ra", a, b);
 		if (!push_in_vector(&(*info)->cmd, RA, sizeof(char)))
@@ -89,12 +90,12 @@ void			all_to_b(t_stack **a, t_stack **b, t_vectors **info)
 	int				middle_val;
 
 	print_stacks(*a, *b);
-	while ((*a) && (*a)->next && (*a)->next->next && !(check_order((*a), 0)))
+	while ((*a) && (*a)->next && (*a)->next->next && !(ft_isslice((*a))))
 	{
 		if ((middle_val = get_middle(a)) < 0)
 			clean_and_exit(a, b, 0, 'm');
 		ft_printf("Middle is = %d\n", middle_val);
-		while (check_mid((*a), middle_val))
+		while (check_mid((*a), middle_val) && !(ft_isslice((*a))))
 		{
 			pb_forward(a, b, info, middle_val);
 			ft_printf("This operation is default.\n");
