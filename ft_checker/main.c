@@ -11,13 +11,15 @@ int		main(int argc, char **argv)
 		put_errmsg_and_exit('d');
 	a = read_argv(argc, argv);
 	b = NULL;
-//	print_stacks(a, b);
 	while ((count = get_next_line(0, &cmd)))
 	{
 		if (count < 0)
 			break ;
 		if (!check_command(cmd))
-			clean_and_exit(&a, &b, 0, 'd');
+		{
+			ft_printf("This is command: [%s]\n", cmd);
+			clean_and_exit(&a, &b, 0, 'c');
+		}
 		run_command(cmd, &a, &b);
 		free(cmd);
 	}

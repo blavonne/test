@@ -100,28 +100,31 @@ void			all_to_a(t_stack **a, t_stack **b, t_info **m)
 	t_stack	*ptr;
 	int		shortest_way_index;
 
-//	ft_printf("%i iteration start.\n", gl);
-//	gl++;
-	ptr = (*b);
-	while (ptr)
+	if (*b)
 	{
+		//	ft_printf("%i iteration start.\n", gl);
+//	gl++;
+		ptr = (*b);
+		while (ptr)
+		{
 //		ft_printf("Initial statement:\n");
 //		print_stacks(*a, *b);
 //		ft_printf("Current value: %d.\n", ptr->value);
-		if (!set_steps((*a), (*b), ptr, m))
+			if (!set_steps((*a), (*b), ptr, m))
+				clean_and_exit(a, b, m, 'm');
+			ptr = ptr->next;
+		}
+		shortest_way_index = find_min_index((*m)->count_steps_i);
+		if (shortest_way_index < 0)
 			clean_and_exit(a, b, m, 'm');
-		ptr = ptr->next;
-	}
-	shortest_way_index = find_min_index((*m)->count_steps_i);
-	if (shortest_way_index < 0)
-		clean_and_exit(a, b, m, 'm');
 //	ft_printf("%i iteration middle.\n", gl);
 //	ft_printf("Min is: %d.\nStart insertion.\n", shortest_way_index);
-	if (!merge_commands(a, b, m, shortest_way_index))
-		clean_and_exit(a, b, m, 'm');
-	reset_cmd_arr(m);
-	if ((*b) == NULL)
-		return ;
-	else
-		all_to_a(a, b, m);
+		if (!merge_commands(a, b, m, shortest_way_index))
+			clean_and_exit(a, b, m, 'm');
+		reset_cmd_arr(m);
+		if ((*b) == NULL)
+			return ;
+		else
+			all_to_a(a, b, m);
+	}
 }

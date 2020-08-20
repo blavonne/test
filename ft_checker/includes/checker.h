@@ -72,7 +72,9 @@ int					ft_isslice(t_stack *a);
 
 t_stack				*create_stack(void);
 t_stack				*copy_stack(t_stack *src);
-void				push_in_stack(t_stack **stack, t_stack *next);
+int					push_in_stack(t_stack **stack, int value);
+int					get_number(char *str, t_stack **stack);
+int					try_to_split(char *str, t_stack **stack);
 
 int					check(int argc, char **argv);//del
 int					check_command(char *cmd);
@@ -110,7 +112,7 @@ void				check_ord(int *arr, int size);//del
 void				print_arr(int *arr, int size);//del
 void				print_stacks(t_stack *a, t_stack *b);//del
 void				print_vector(t_vector *way);//del
-long long int		ft_abs_ll(int nbr);
+//long long int		ft_abs_ll(int nbr);
 
 
 #endif

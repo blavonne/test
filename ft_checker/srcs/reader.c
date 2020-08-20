@@ -7,7 +7,6 @@ int					set_number(t_bigint *big, t_stack **stack)
 
 	i = 1;
 	res = 0;
-	ft_printf("set_number\n");
 	big->length = set_len_big(big);
 	if (big->length == BIGINT_SIZE && big->bigint[big->length - 1] > 2)
 		clean_and_exit(stack, 0, 0, 'd');
@@ -34,7 +33,6 @@ int					get_number(char *str, t_stack **stack)
 	int			j;
 
 	j = 0;
-	ft_printf("start get_number\n");
 	i = (int)ft_strlen(str) - 1;
 	initialize_big(&big);
 	if (i > BIGINT_SIZE)
@@ -52,7 +50,6 @@ int					get_number(char *str, t_stack **stack)
 		i--;
 	}
 	number = set_number(&big, stack);
-	ft_printf("end get_number\n");
 	return (number);
 }
 
@@ -62,8 +59,6 @@ void				check_duplicates(t_stack **stack)
 	t_stack		*head;
 
 	head = (*stack);
-	ft_printf("check_duplicates\n");
-	print_stacks(*stack, 0);
 	while (head->next)
 	{
 		cur = head->next;
@@ -71,10 +66,7 @@ void				check_duplicates(t_stack **stack)
 			while (cur)
 			{
 				if (cur->value == head->value)
-				{
-					ft_printf("Cur %d, head %d\n", cur->value, head->value);
 					clean_and_exit(stack, 0, 0, 'd');
-				}
 				cur = cur->next;
 			}
 		}
@@ -86,22 +78,15 @@ t_stack				*read_argv(int argc, char **argv)
 {
 	int		i;
 	t_stack	*stack;
-	t_stack	*tmp;
 
-	i = 1;
 	stack = NULL;
-	while (i++ < argc)
-	{
-		if (!(tmp = create_stack()))
-			clean_and_exit(&stack, 0, 0, 'm');
-		push_in_stack(&stack, tmp);
-	}
 	i = 1;
-	tmp = stack;
 	while (i < argc)
 	{
-		tmp->value = get_number(argv[i], &stack);
-		tmp = tmp->next;
+		if (ft_isnumber(argv[i]))
+			push_in_stack(&stack, get_number(argv[i], &stack));
+		else
+			try_to_split(argv[i], &stack);
 		i++;
 	}
 	check_duplicates(&stack);

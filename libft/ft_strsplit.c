@@ -53,19 +53,19 @@ static int	ft_push_in_arr(char **arr, char *str, char c, int words)
 	return (1);
 }
 
-static void	ft_clear_arr(char **arr)
+static void	ft_clear_arr(char ***arr)
 {
 	size_t	i;
 
-	if (!arr)
+	if (!(*arr))
 		return ;
 	i = 0;
-	while (arr[i])
+	while ((*arr)[i])
 	{
-		free(arr[i]);
+		free((*arr)[i]);
 		i++;
 	}
-	free(arr);
+	free(*arr);
 }
 
 char		**ft_strsplit(char const *s, char c)
@@ -82,7 +82,7 @@ char		**ft_strsplit(char const *s, char c)
 		buf[words] = NULL;
 	else
 	{
-		ft_clear_arr(buf);
+		ft_clear_arr(&buf);
 		return (NULL);
 	}
 	return (buf);

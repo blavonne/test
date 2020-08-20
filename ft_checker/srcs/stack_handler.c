@@ -26,19 +26,27 @@ t_stack		*copy_stack(t_stack *src)
 	return (copy_head);
 }
 
-void		push_in_stack(t_stack **stack, t_stack *next)
+int			push_in_stack(t_stack **stack, int value)
 {
 	t_stack	*ptr;
 
 	if (!(*stack))
 	{
-		(*stack) = next;
-		return ;
+		if (!((*stack) = create_stack()))
+			return (0);
+		(*stack)->value = value;
 	}
-	ptr = (*stack);
-	while (ptr->next)
+	else if ((*stack))
+	{
+		ptr = (*stack);
+		while (ptr->next)
+			ptr = ptr->next;
+		if (!(ptr->next = create_stack()))
+			clean_and_exit(stack, 0, 0, 'm');
 		ptr = ptr->next;
-	ptr->next = next;
+		ptr->value = value;
+	}
+	return (1);
 }
 
 t_stack		*create_stack(void)

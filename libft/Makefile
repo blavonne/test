@@ -20,6 +20,7 @@ SRC = errors.c\
 		ft_isalpha.c\
 		ft_isascii.c\
 		ft_isdigit.c\
+		ft_isnumber.c\
 		ft_isprint.c\
 		ft_issign.c\
 		ft_isspace.c\

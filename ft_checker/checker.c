@@ -46,10 +46,9 @@ int		check(int argc, char **argv)
 	int		count;
 
 	if (argc == 1)
-		put_errmsg_and_exit('a');
+		put_errmsg_and_exit('d');
 	a = read_argv(argc, argv);
 	b = NULL;
-//	print_stacks(a, b);
 	while ((count = get_next_line(0, &cmd)))
 	{
 		if (count < 0)
@@ -64,3 +63,4 @@ int		check(int argc, char **argv)
 	clean_and_exit(&a, &b, 0, 0);
 	return (0);
 }
+

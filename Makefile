@@ -26,6 +26,7 @@ C_SRC = $(C_SRCS)bigint_base.c\
 	$(C_ROOT)checker.c\
 	$(PS_SRCS)cleaner.c\
 	$(PS_SRCS)check_order.c\
+	$(C_SRCS)spliter.c\
 	$(C_ROOT)main.c\
 
 PS_SRC = $(PS_SRCS)all_to_a.c\
@@ -50,6 +51,7 @@ PS_SRC = $(PS_SRCS)all_to_a.c\
 	$(C_SRCS)reader.c\
 	$(C_SRCS)commander.c\
 	$(C_SRCS)bigint_base.c\
+	$(C_SRCS)spliter.c\
 	$(C_ROOT)checker.c\
 
 C_OBJ = $(C_SRC:%.c=%.o)
