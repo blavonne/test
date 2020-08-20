@@ -49,7 +49,7 @@ int		check(int argc, char **argv)
 		put_errmsg_and_exit('d');
 	a = read_argv(argc, argv);
 	b = NULL;
-	print_stacks(a, b);
+//	print_stacks(a, b);
 	while ((count = get_next_line(0, &cmd)))
 	{
 		if (count < 0 || !check_command(cmd))

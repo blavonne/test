@@ -64,10 +64,12 @@ t_main		*get_commands(t_stack **a, t_stack **b)
 		clean_and_exit(a, b, 0, 'm');
 	all_to_b(a, b, &main);
 	all_to_a(a, b, &main);
-	if (ft_isslice(*a))
-		ft_printf("Is slice.\n");
-	else
-		ft_printf("Is NOT slice.\n");
+//	if (ft_isslice(*a))
+//		ft_printf("Is slice.\n");
+//	else
+//		ft_printf("Is NOT slice.\n");
+	if (!(ft_isslice(*a)))
+		return (0);
 	if (!sort_slice(a, &main))
 		clean_and_exit(a, b, &main, 'm');
 	return (main);

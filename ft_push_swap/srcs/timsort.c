@@ -111,9 +111,9 @@ int				*timsort(int *arr, int size)
 	}
 	arr = merge(arr, &map);
 	destroy_map(&map);
-	ft_printf("Array after sort: ");
-	print_arr(arr, size);//потом убрать
-	ft_printf("Sort status: ");
-	check_ord(arr, size);//убрать потом
+//	ft_printf("Array after sort: ");
+//	print_arr(arr, size);//потом убрать
+//	ft_printf("Sort status: ");
+//	check_ord(arr, size);//убрать потом
 	return (arr);
 }

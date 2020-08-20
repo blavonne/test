@@ -116,8 +116,8 @@ char						*ft_strcpy(char *dst, const char *src);
 /*
 ** itoa and symbols count functions
 */
-char						*itoa_i(int decimal);
-char						*itoa_u(unsigned int decimal, int base);
+char						*ft_itoa(int decimal);
+char						*ft_itoa_u(unsigned int decimal, int base);
 char						*itoa_l(long int decimal);
 char						*itoa_lu(unsigned long int decimal, int base);
 char						*itoa_ll(long long int decimal);

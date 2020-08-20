@@ -28,7 +28,7 @@ static void	print_octal(t_format *info, int base)
 
 	res = NULL;
 	if (!info->length[0] || info->length[0] == 'h')
-		res = itoa_u(info->z.u, base);
+		res = ft_itoa_u(info->z.u, base);
 	else if (info->length[0] == 'l' && !info->length[1])
 		res = itoa_lu(info->z.lu, base);
 	else if (info->length[0] == 'l' && info->length[1])
@@ -46,7 +46,7 @@ static void	print_hex(t_format *info, int base)
 	if (info->specifier == 'p' && !info->z.llu)
 		ft_putchar('0');
 	else if (!info->length[0] || info->length[0] == 'h')
-		res = itoa_u(info->z.u, base);
+		res = ft_itoa_u(info->z.u, base);
 	else if (info->length[0] == 'l' && !info->length[1])
 		res = itoa_lu(info->z.lu, base);
 	else if (info->length[0] == 'l' && info->length[1])
@@ -63,7 +63,7 @@ static void	print_decimal(t_format *info)
 
 	res = NULL;
 	if (!info->length[0] || info->length[0] == 'h')
-		res = itoa_i(info->z.i);
+		res = ft_itoa(info->z.i);
 	else if (info->length[0] == 'l' && !info->length[1])
 		res = itoa_l(info->z.l);
 	else if (info->length[0] == 'l' && info->length[1])

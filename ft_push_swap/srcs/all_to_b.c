@@ -89,19 +89,19 @@ void			all_to_b(t_stack **a, t_stack **b, t_main **info)
 {
 	int				middle_val;
 
-	print_stacks(*a, *b);
+//	print_stacks(*a, *b);
 	while ((*a) && (*a)->next && (*a)->next->next && !(ft_isslice((*a))))
 	{
 		if ((middle_val = get_middle(a)) < 0)
 			clean_and_exit(a, b, 0, 'm');
-		ft_printf("Middle is = %d\n", middle_val);
+//		ft_printf("Middle is = %d\n", middle_val);
 		while (check_mid((*a), middle_val) && !(ft_isslice((*a))))
 		{
 			pb_forward(a, b, info, middle_val);
-			ft_printf("This operation is default.\n");
+//			ft_printf("This operation is default.\n");
 			run_command("rra", a, b);
 			pb_back(a, b, info, middle_val);
-			ft_printf("This operation is default.\n");
+//			ft_printf("This operation is default.\n");
 			run_command("ra", a, b);
 			ra(a, b, info, middle_val);
 		}

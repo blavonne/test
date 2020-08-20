@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-char	*itoa_i(int decimal)
+char	*ft_itoa(int decimal)
 {
 	int		len;
 	int		temp;
@@ -34,7 +34,7 @@ char	*itoa_i(int decimal)
 	return (res);
 }
 
-char	*itoa_u(unsigned int decimal, int base)
+char	*ft_itoa_u(unsigned int decimal, int base)
 {
 	int				len;
 	unsigned int	temp;

@@ -51,7 +51,7 @@ static int		merge_commands(t_stack **a, t_stack **b, t_main **m,\
 	int				i;
 	unsigned char	*arr;
 
-	ft_printf("====Start merge_commands func.====\n");
+//	ft_printf("====Start merge_commands func.====\n");
 	i = 0;
 	if (!(*m)->arr_size || (*m)->cmd_arr == NULL ||\
 	(*m)->cmd_arr[count] == NULL)
@@ -73,7 +73,7 @@ static int		merge_commands(t_stack **a, t_stack **b, t_main **m,\
 		arr[i] == RRR ? run_command("rrr", a, b) : 0;
 		i++;
 	}
-	ft_printf("====End merge_commands func.====\n");
+//	ft_printf("====End merge_commands func.====\n");
 	return (1);
 }
 
@@ -93,21 +93,21 @@ void			reset_cmd_arr(t_main **m)
 	(*m)->count_steps_i->next = 0;
 }
 
-int		gl = 0;//del
+//int		gl = 0;//del
 
 void			all_to_a(t_stack **a, t_stack **b, t_main **m)
 {
 	t_stack	*ptr;
 	int		shortest_way_index;
 
-	ft_printf("%i iteration start.\n", gl);
-	gl++;
+//	ft_printf("%i iteration start.\n", gl);
+//	gl++;
 	ptr = (*b);
 	while (ptr)
 	{
-		ft_printf("Initial statement:\n");
-		print_stacks(*a, *b);
-		ft_printf("Current value: %d.\n", ptr->value);
+//		ft_printf("Initial statement:\n");
+//		print_stacks(*a, *b);
+//		ft_printf("Current value: %d.\n", ptr->value);
 		if (!set_steps((*a), (*b), ptr, m))
 			clean_and_exit(a, b, m, 'm');
 		ptr = ptr->next;
@@ -115,8 +115,8 @@ void			all_to_a(t_stack **a, t_stack **b, t_main **m)
 	shortest_way_index = find_min_index((*m)->count_steps_i);
 	if (shortest_way_index < 0)
 		clean_and_exit(a, b, m, 'm');
-	ft_printf("%i iteration middle.\n", gl);
-	ft_printf("Min is: %d.\nStart insertion.\n", shortest_way_index);
+//	ft_printf("%i iteration middle.\n", gl);
+//	ft_printf("Min is: %d.\nStart insertion.\n", shortest_way_index);
 	if (!merge_commands(a, b, m, shortest_way_index))
 		clean_and_exit(a, b, m, 'm');
 	reset_cmd_arr(m);

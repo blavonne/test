@@ -120,8 +120,8 @@ int				*merge(int *arr, t_map **map)
 		{
 			arr = (x && z && x > z) ? merge2(arr, map, i, i + 1) :\
 			merge2(arr, map, i - 1, i);
-			ft_printf("Merge status: ");//delete
-			check_ord(&arr[(*map)->begin[i]], (*map)->size[i]);//delete
+//			ft_printf("Merge status: ");//delete
+//			check_ord(&arr[(*map)->begin[i]], (*map)->size[i]);//delete
 			i = 1;
 		}
 	}

@@ -20,7 +20,7 @@ int		nbr_len_int(t_format *info)
 
 	res = NULL;
 	temp = info->z.i;
-	if (!(res = itoa_i(temp)))
+	if (!(res = ft_itoa(temp)))
 		put_errmsg_and_exit('m');
 	len = (int)ft_strlen(res);
 	free(res);
@@ -35,7 +35,7 @@ int		nbr_len_uint(t_format *info, int base)
 
 	res = NULL;
 	temp = info->z.u;
-	if (!(res = itoa_u(temp, base)))
+	if (!(res = ft_itoa_u(temp, base)))
 		put_errmsg_and_exit('m');
 	len = (int)ft_strlen(res);
 	free(res);

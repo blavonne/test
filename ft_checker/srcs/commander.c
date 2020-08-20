@@ -93,8 +93,8 @@ void		run_command(char *command, t_stack **a, t_stack **b)
 		run_rr(a);
 		run_rr(b);
 	}
-	ft_printf("Commander. Operation [%s] is done.\n", command);
-	a && b ? print_stacks(*a, *b) : 0;
-	!a && b ? print_stacks(0, *b) : 0;
-	a && !b ? print_stacks(*a, 0) : 0;
+//	ft_printf("Commander. Operation [%s] is done.\n", command);
+//	a && b ? print_stacks(*a, *b) : 0;
+//	!a && b ? print_stacks(0, *b) : 0;
+//	a && !b ? print_stacks(*a, 0) : 0;
 }
