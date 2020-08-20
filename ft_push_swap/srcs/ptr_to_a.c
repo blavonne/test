@@ -17,7 +17,7 @@ static int		try_to_push(int count, unsigned char cmd, t_vector **dest)
 	return (1);
 }
 
-int				try_ra(t_stack *a, t_stack *ptr, t_vector **ra)
+static int		try_ra(t_stack *a, t_stack *ptr, t_vector **ra)
 {
 	int				ra_count;
 	long long int	min;
@@ -45,7 +45,7 @@ int				try_ra(t_stack *a, t_stack *ptr, t_vector **ra)
 	return (try_to_push(ra_count, RA, ra));
 }
 
-int				try_rra(t_stack *a, t_stack *ptr, t_vector **rra)
+static int		try_rra(t_stack *a, t_stack *ptr, t_vector **rra)
 {
 	int				rra_count;
 	long long int	min;
