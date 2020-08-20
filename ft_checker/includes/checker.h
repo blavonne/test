@@ -36,6 +36,7 @@ typedef struct		s_main
 	t_vector		*count_steps_i;//cmd-arr-cur?
 	t_vector		**cmd_arr;
 	int				arr_size;
+	int				arr_next;
 }					t_main;
 
 typedef struct		s_stack

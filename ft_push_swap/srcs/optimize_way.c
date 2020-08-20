@@ -11,7 +11,7 @@ void			merge_r(unsigned char *a, unsigned char *b)
 	while (a[i] != PA && b[j] != a[0])
 	{
 		i = 0;
-		while (a[i] != PA && b[j] != *a)
+		while (a[i] != PA && b[j] != a[0])
 		{
 			if (b[j] == RB && a[i] == RA)
 			{
@@ -63,7 +63,10 @@ void			optimize_way(t_vector *way)
 	while (i < way->next)
 	{
 		if (b[i] == RA || b[i] == RRA)
+		{
 			a = &b[i];
+			break ;
+		}
 		i++;
 	}
 	a ? merge_r(a, b) : 0;
