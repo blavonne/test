@@ -13,15 +13,15 @@ static int		try_to_push(int count, unsigned char cmd, t_vector **dest)
 
 int				try_ra(t_stack *a, t_stack *ptr, t_vector **ra)
 {
-	int		ra_count;
-	int		min;
-	int		i;
+	int				ra_count;
+	long long int	min;
+	int				i;
 
 	ft_printf("====Start try_ra func.====\n");
 	i = 1;
 	if (ptr && a)
 	{
-		min = ft_abs(ptr->value - a->value);
+		min = ft_abs_ll(ptr->value - a->value);
 		ra_count = (ptr->value < a->value) ? 0 : 1;
 		a = (a->next) ? a->next : 0;
 	}
@@ -41,31 +41,31 @@ int				try_ra(t_stack *a, t_stack *ptr, t_vector **ra)
 
 int				try_rra(t_stack *a, t_stack *ptr, t_vector **rra)
 {
-	int		rra_count;
-	int		min;
-	int		i;
-	t_stack	*begin;
+	int				rra_count;
+	long long int	min;
+	int				i;
+	t_stack	*copy;
 
 	ft_printf("====Start try_rra func.====\n");
-	i = 1;
+	if (!(copy = copy_stack(a)))
+		return (0);
+	i = 0;
 	rra_count = 0;
-	if (a && ptr)
+	if (ptr)
+		min = ft_abs_ll(ptr->value - copy->value) + 1;
+	while (ptr)
 	{
-		min = ft_abs(ptr->value - a->value);
-		begin = a;
-	}
-	while (a && ptr)
-	{
-		if (ft_abs(ptr->value - a->value) < min)
+		if (ft_abs_ll(ptr->value - copy->value) < min)
 		{
-			rra_count = (ptr->value < a->value) ? i - 1 : i;
-			min = ft_abs(ptr->value - a->value);
+			rra_count = (ptr->value > copy->value) ? i - 1 : i;
+			min = ft_abs_ll(ptr->value - copy->value);
 		}
-		i++;
-		run_command("rra", &a, 0);
-		if (a == begin)
+		run_command("rra", &copy, 0);
+		if (copy->value == a->value)
 			break ;
+		i++;
 	}
+	destroy_stack(&copy);
 	ft_printf("====End try_rra func.====\n");
 	return (try_to_push(rra_count, RRA, rra));
 }
@@ -98,6 +98,7 @@ int				ptr_to_a(t_stack *a, t_stack *ptr, t_vector **way)
 	t_vector	*ra;
 	t_vector	*rra;
 
+	ft_printf("====Start ptr_to_a func.====\n");
 	if (!(ra = create_vector()))
 		return (0);
 	if (!(rra = create_vector()))
@@ -110,5 +111,6 @@ int				ptr_to_a(t_stack *a, t_stack *ptr, t_vector **way)
 	}
 	if (!add_new_way(way, &ra, &rra))
 		return (0);
+	ft_printf("====End ptr_to_a func.====\n");
 	return (1);
 }

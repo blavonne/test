@@ -26,8 +26,8 @@
 typedef struct		s_vector
 {
 	void			*arr;
-	size_t			size;
-	int				next;
+	size_t			size;//макс размер
+	size_t			next;//след ячейка, куда ставим
 }					t_vector;
 
 typedef struct		s_main
@@ -35,8 +35,8 @@ typedef struct		s_main
 	t_vector		*cmd_c;
 	t_vector		*count_steps_i;//cmd-arr-cur?
 	t_vector		**cmd_arr;
-	int				arr_size;
-	int				arr_next;
+	size_t			arr_size;//макс ёмкость массива векторов
+	size_t			arr_next;//следующий вектор, куда вставляем
 }					t_main;
 
 typedef struct		s_stack
@@ -99,6 +99,7 @@ int					*insertion_sort(int *arr, t_map *map);
 void				all_to_a(t_stack **a, t_stack **b, t_main **m);
 t_vector			*ptr_to_top_b(t_stack *b, t_stack *ptr);
 int					ptr_to_a(t_stack *a, t_stack *ptr, t_vector **way);
+int					set_steps(t_stack *a, t_stack *b, t_stack *ptr, t_main **m);
 int					cat_vectors(t_vector **dest, t_vector *src);
 void				optimize_way(t_vector *way);
 
@@ -106,6 +107,7 @@ void				print_info(t_main *info);//del
 void				check_ord(int *arr, int size);//del
 void				print_arr(int *arr, int size);//del
 void				print_stacks(t_stack *a, t_stack *b);//del
+void				print_vector(t_vector *way);//del
 
 
 #endif

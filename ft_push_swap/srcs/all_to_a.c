@@ -1,8 +1,8 @@
 #include "checker.h"
 
-void			print_vector(t_vector *way)
+void			print_vector(t_vector *way)//del
 {
-	int		i;
+	int				i;
 	unsigned char	*arr;
 
 	i = 0;
@@ -25,30 +25,7 @@ void			print_vector(t_vector *way)
 	ft_printf("\n");
 }
 
-int				set_steps(t_stack *a, t_stack *b, t_stack *ptr, t_main **m)
-{
-	t_vector	*way;
-
-	//1.вытолкнуть ptr наверх Б
-	if (!(way = ptr_to_top_b(b, ptr)))
-		return (0);
-	//2.найти место для ptr в А
-	if (!ptr_to_a(a, ptr, &way))
-		return (0);
-	//3.переместить в А
-	if (!push_in_vector(&way, PA, sizeof(char)))
-		return (0);
-	ft_printf("Current value: %d.\n", ptr->value);
-	print_vector(way);
-	optimize_way(way);
-	print_vector(way);
-	//4.закинуть в varr
-	push_in_varr(m, way);
-	push_in_vector(&(*m)->count_steps_i, way->next, sizeof(int));
-	return (1);
-}
-
-int				find_min_index(t_vector *count_steps_i)
+static int		find_min_index(t_vector *count_steps_i)
 {
 	int		*arr;
 	int		i;
@@ -68,43 +45,83 @@ int				find_min_index(t_vector *count_steps_i)
 	return (min);
 }
 
-//int				merge_commands(t_stack **a, t_stack **b, t_main **m, int count)
-//{
-//	int				i;
-//	unsigned char	*arr;
-//
-//	i = 0;
-//	if ((*m)->cmd_arr[count])
-//	arr = (*m)->cmd_arr[count]->arr;
-//	while (i < (*m)->cmd_arr[count]->next)
-//	{
-//		push_in_vector(&(*m)->cmd_c, )
-//	}
-//}
+static int		merge_commands(t_stack **a, t_stack **b, t_main **m,\
+		int count)
+{
+	int				i;
+	unsigned char	*arr;
+
+	ft_printf("====Start merge_commands func.====\n");
+	i = 0;
+	if (!(*m)->arr_size || (*m)->cmd_arr == NULL ||\
+	(*m)->cmd_arr[count] == NULL)
+		return (0);
+	arr = (*m)->cmd_arr[count]->arr;
+	while (i < (*m)->cmd_arr[count]->next)
+	{
+		if (!(push_in_vector(&(*m)->cmd_c, arr[i], sizeof(char))))
+			return (0);
+		arr[i] == RA ? run_command("ra", a, b) : 0;
+		arr[i] == RB ? run_command("rb", a, b) : 0;
+		arr[i] == RR ? run_command("rr", a, b) : 0;
+		arr[i] == SA ? run_command("sa", a, b) : 0;
+		arr[i] == SB ? run_command("sb", a, b) : 0;
+		arr[i] == PA ? run_command("pa", a, b) : 0;
+		arr[i] == PB ? run_command("pb", a, b) : 0;
+		arr[i] == RRA ? run_command("rra", a, b) : 0;
+		arr[i] == RRB ? run_command("rrb", a, b) : 0;
+		arr[i] == RRR ? run_command("rrr", a, b) : 0;
+		i++;
+	}
+	ft_printf("====End merge_commands func.====\n");
+	return (1);
+}
+
+void			reset_cmd_arr(t_main **m)
+{
+	int		i;
+
+	i = 0;
+	while (i < (*m)->arr_next)
+	{
+		ft_memset((*m)->cmd_arr[i]->arr, 0, (*m)->cmd_arr[i]->next);
+		i++;
+	}
+	(*m)->arr_next = 0;
+	ft_memset((*m)->count_steps_i->arr, 0, sizeof(int) *\
+	(*m)->count_steps_i->next);
+	(*m)->count_steps_i->next = 0;
+}
+
+int		gl = 0;//del
 
 void			all_to_a(t_stack **a, t_stack **b, t_main **m)
 {
 	t_stack	*ptr;
-	int		count;
+	int		shortest_way_index;
 
-	count = 0;
+	ft_printf("%i iteration start.\n", gl);
+	gl++;
 	ptr = (*b);
-	ft_printf("Initial statement:\n");
-	print_stacks(*a, *b);
 	while (ptr)
 	{
+		ft_printf("Initial statement:\n");
+		print_stacks(*a, *b);
+		ft_printf("Current value: %d.\n", ptr->value);
 		if (!set_steps((*a), (*b), ptr, m))
 			clean_and_exit(a, b, m, 'm');
-		ft_printf("Stacks statement after set_steps:\n");
-		print_stacks(*a, *b);
 		ptr = ptr->next;
 	}
-	count = find_min_index((*m)->count_steps_i);
-	if (count < 0)
+	shortest_way_index = find_min_index((*m)->count_steps_i);
+	if (shortest_way_index < 0)
 		clean_and_exit(a, b, m, 'm');
-	ft_printf("Min is: %d\n", count);
-//	merge_commands(a, b, m, count);
-//	if (b == NULL)
-//		return ;
-//	all_to_a(a, b, m);
+	ft_printf("%i iteration middle.\n", gl);
+	ft_printf("Min is: %d.\nStart insertion.\n", shortest_way_index);
+	if (!merge_commands(a, b, m, shortest_way_index))
+		clean_and_exit(a, b, m, 'm');
+	reset_cmd_arr(m);
+	if ((*b) == NULL)
+		return ;
+	else
+		all_to_a(a, b, m);
 }

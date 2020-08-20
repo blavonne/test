@@ -27,5 +27,5 @@ add_executable(checker
         ft_push_swap/srcs/ft_is_slice.c
         ft_push_swap/srcs/check_order.c
         ft_push_swap/srcs/all_to_a.c
-        ft_push_swap/srcs/vector_arr.c ft_push_swap/srcs/main_struct.c ft_push_swap/srcs/ptr_to_top_b.c ft_push_swap/srcs/ptr_to_a.c ft_push_swap/srcs/optimize_way.c)
+        ft_push_swap/srcs/vector_arr.c ft_push_swap/srcs/main_struct.c ft_push_swap/srcs/ptr_to_top_b.c ft_push_swap/srcs/ptr_to_a.c ft_push_swap/srcs/optimize_way.c ft_push_swap/srcs/set_steps.c)
 target_link_libraries(checker libft ftprintf)

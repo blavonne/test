@@ -135,5 +135,6 @@ void				ft_str_tolower(char *str);
 void				ft_str_toupper(char *str);
 int					get_next_line(const int fd, char **line);
 void				put_errmsg_and_exit(char type);
+long long int		ft_abs_ll(int nbr);
 
 #endif
