@@ -5,6 +5,12 @@ static int		try_to_push(int count, unsigned char cmd, t_vector **dest)
 	int		i;
 
 	i = 0;
+	if (count < 0)
+	{
+		destroy_vector(dest);
+		(*dest) = NULL;
+		return (1);
+	}
 	while (i++ < count)
 		if (!(push_in_vector(dest, cmd, sizeof(char))))
 			return (0);
@@ -44,7 +50,7 @@ int				try_rra(t_stack *a, t_stack *ptr, t_vector **rra)
 	int				rra_count;
 	long long int	min;
 	int				i;
-	t_stack	*copy;
+	t_stack			*copy;
 
 	ft_printf("====Start try_rra func.====\n");
 	if (!(copy = copy_stack(a)))
@@ -70,33 +76,27 @@ int				try_rra(t_stack *a, t_stack *ptr, t_vector **rra)
 	return (try_to_push(rra_count, RRA, rra));
 }
 
-int				add_new_way(t_vector **way, t_vector **ra, t_vector **rra)
+static int		insert_way(t_vector **way, t_vector **less)
 {
-	if ((*ra)->next < (*rra)->next)
+	if (*less)
 	{
-		destroy_vector(rra);
-		if (!(cat_vectors(way, *ra)))
+		if (!(cat_vectors(way, (*less))))
 		{
-			destroy_vector(ra);
+			destroy_vector(less);
 			return (0);
 		}
+		destroy_vector(less);
+		(*less) = NULL;
+		return (1);
 	}
-	else
-	{
-		destroy_vector(ra);
-		if (!(cat_vectors(way, *rra)))
-		{
-			destroy_vector(rra);
-			return (0);
-		}
-	}
-	return (1);
+	return (0);
 }
 
 int				ptr_to_a(t_stack *a, t_stack *ptr, t_vector **way)
 {
 	t_vector	*ra;
 	t_vector	*rra;
+	t_vector	*less;
 
 	ft_printf("====Start ptr_to_a func.====\n");
 	if (!(ra = create_vector()))
@@ -109,7 +109,13 @@ int				ptr_to_a(t_stack *a, t_stack *ptr, t_vector **way)
 		destroy_vector(&rra);
 		return (0);
 	}
-	if (!add_new_way(way, &ra, &rra))
+	if (ra && rra)
+		less = (ra->next < rra->next) ? copy_vector(ra) : copy_vector(rra);
+	else
+		less = (ra) ? copy_vector(ra) : copy_vector(rra);
+	destroy_vector(&ra);
+	destroy_vector(&rra);
+	if (!less || !insert_way(way, &less))
 		return (0);
 	ft_printf("====End ptr_to_a func.====\n");
 	return (1);

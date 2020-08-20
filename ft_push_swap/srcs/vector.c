@@ -39,6 +39,27 @@ int					push_in_vector(t_vector **v, int value, size_t size)
 	return (1);
 }
 
+t_vector			*copy_vector(t_vector *src)
+{
+	t_vector	*copy;
+
+	if (src)
+	{
+		if (!(copy = (t_vector *)malloc(sizeof(t_vector))))
+			return (NULL);
+		copy->size = src->size;
+		copy->next = src->next;
+		if (!(copy->arr = malloc(src->size)))
+		{
+			free(copy);
+			return (NULL);
+		}
+		copy->arr = ft_memcpy(copy->arr, src->arr, src->size);
+		return (copy);
+	}
+	return (NULL);
+}
+
 int					cat_vectors(t_vector **dest, t_vector *src)
 {
 	int				i;

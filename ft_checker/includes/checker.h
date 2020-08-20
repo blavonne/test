@@ -78,6 +78,7 @@ int					check(int argc, char **argv);//del
 
 t_main				*create_main_struct(void);
 t_vector			*create_vector(void);
+t_vector			*copy_vector(t_vector *src);
 int					push_in_vector(t_vector **v, int value, size_t size);
 t_vector			**create_varr(void);
 int					push_in_varr(t_main **m, t_vector *tmp);

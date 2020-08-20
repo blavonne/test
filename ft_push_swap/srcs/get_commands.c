@@ -47,10 +47,12 @@ int			sort_slice(t_stack **a, t_main **m)
 	}
 	else
 	{
-		while (i++ < (*m)->cmd_arr[0]->next)
+		while (i++ < (*m)->cmd_arr[1]->next)
 			run_command("rra", a, 0);
 		cat_vectors(&(*m)->cmd_c, (*m)->cmd_arr[1]);
 	}
+	if (!check_asc_order((*a), 0))
+		return (0);
 	return (1);
 }
 
@@ -66,7 +68,7 @@ t_main		*get_commands(t_stack **a, t_stack **b)
 		ft_printf("Is slice.\n");
 	else
 		ft_printf("Is NOT slice.\n");
-//	if (!sort_slice(a, &main))
-//		clean_and_exit(a, b, &main, 'm');
+	if (!sort_slice(a, &main))
+		clean_and_exit(a, b, &main, 'm');
 	return (main);
 }
