@@ -116,7 +116,7 @@ int				*merge(int *arr, t_map **map)
 		z = y && (*map)->size[i + 1] ? (*map)->size[i + 1] : 0;
 		if (x && y && z && (x > y + z) && (y > z))
 			i++;
-		else if ((x && z && x > z) || (x && !z || x <= z))
+		else if ((x && z && x > z) || ((x && !z) || (x <= z)))
 		{
 			arr = (x && z && x > z) ? merge2(arr, map, i, i + 1) :\
 			merge2(arr, map, i - 1, i);

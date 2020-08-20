@@ -12,8 +12,8 @@ int		check_point(t_stack *a, t_stack *point, char order)
 //		i = (check_dsc_order(point)) ? 2 : 0;
 	while (ptr && ptr->next)
 		ptr = ptr->next;
-	if (i == 1 && ptr && ptr->value < a->value || i == 2 && ptr && ptr->value >\
-	a->value)
+	if ((i == 1 && ptr && ptr->value < a->value) || (i == 2 && ptr &&
+	ptr->value > a->value))
 		return (1);
 	return (0);
 }

@@ -5,7 +5,7 @@
 ** This func pushes numbers less than middle_val from top A to top B
 */
 
-static void		pb_forward(t_stack **a, t_stack **b, t_main **info,\
+static void		pb_forward(t_stack **a, t_stack **b, t_info **info,\
 		int middle_val)
 {
 	t_stack		*ptr;
@@ -25,7 +25,7 @@ static void		pb_forward(t_stack **a, t_stack **b, t_main **info,\
 ** This func pushes numbers less than middle_val from bottom A to top B
 */
 
-static void		pb_back(t_stack **a, t_stack **b, t_main **info,\
+static void		pb_back(t_stack **a, t_stack **b, t_info **info,\
 		int middle_val)
 {
 	t_stack		*ptr;
@@ -48,7 +48,7 @@ static void		pb_back(t_stack **a, t_stack **b, t_main **info,\
 ** This func swaps numbers in A by ascending order if A contains 2 numbers only
 */
 
-static void		sa(t_stack **a, t_stack **b, t_main **info)
+static void		sa(t_stack **a, t_stack **b, t_info **info)
 {
 	if ((*a) && (*a)->next && !(*a)->next->next && (*a)->value >\
 		(*a)->next->value && !(ft_isslice((*a))))
@@ -64,7 +64,7 @@ static void		sa(t_stack **a, t_stack **b, t_main **info)
 ** This func rotates A till a-value is more or equal middle_val
 */
 
-static void		ra(t_stack **a, t_stack **b, t_main **info, int middle_val)
+static void		ra(t_stack **a, t_stack **b, t_info **info, int middle_val)
 {
 	t_stack *ptr;
 
@@ -85,7 +85,7 @@ static void		ra(t_stack **a, t_stack **b, t_main **info, int middle_val)
 ** and other numbers puts in B
 */
 
-void			all_to_b(t_stack **a, t_stack **b, t_main **info)
+void			all_to_b(t_stack **a, t_stack **b, t_info **info)
 {
 	int				middle_val;
 

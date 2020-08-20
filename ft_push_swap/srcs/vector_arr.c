@@ -1,6 +1,6 @@
 #include "checker.h"
 
-static int			resize_varr(t_main **v)
+static int			resize_varr(t_info **v)
 {
 	t_vector	**narr;
 
@@ -16,7 +16,7 @@ static int			resize_varr(t_main **v)
 	return (1);
 }
 
-int					push_in_varr(t_main **m, t_vector *tmp)
+int					push_in_varr(t_info **m, t_vector *tmp)
 {
 	if ((*m)->arr_next + 1 > (*m)->arr_size)
 		if (!resize_varr(m))
@@ -29,7 +29,7 @@ int					push_in_varr(t_main **m, t_vector *tmp)
 t_vector			**create_varr(void)
 {
 	t_vector	**v_arr;
-	int			i;
+	size_t		i;
 
 	i = 0;
 	if (!(v_arr = (t_vector **)malloc(sizeof(t_vector *) * VARR_SIZE)))

@@ -1,7 +1,7 @@
 #include "checker.h"
 
 
-int			rotate(t_stack **a, t_main **m, char *cmd)
+int			rotate(t_stack **a, t_info **m, char *cmd)
 {
 	t_stack			*copy;
 	t_vector		*tmp;
@@ -28,11 +28,11 @@ int			rotate(t_stack **a, t_main **m, char *cmd)
 	return (i);
 }
 
-int			sort_slice(t_stack **a, t_main **m)
+int			sort_slice(t_stack **a, t_info **m)
 {
 	int		ra;
 	int		rra;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	if (check_asc_order((*a), 0))
@@ -56,21 +56,21 @@ int			sort_slice(t_stack **a, t_main **m)
 	return (1);
 }
 
-t_main		*get_commands(t_stack **a, t_stack **b)
+t_info		*get_commands(t_stack **a, t_stack **b)
 {
-	t_main		*main;
+	t_info		*info;
 
-	if (!(main = create_main_struct()))
+	if (!(info = create_main_struct()))
 		clean_and_exit(a, b, 0, 'm');
-	all_to_b(a, b, &main);
-	all_to_a(a, b, &main);
+	all_to_b(a, b, &info);
+	all_to_a(a, b, &info);
 //	if (ft_isslice(*a))
 //		ft_printf("Is slice.\n");
 //	else
 //		ft_printf("Is NOT slice.\n");
 	if (!(ft_isslice(*a)))
 		return (0);
-	if (!sort_slice(a, &main))
-		clean_and_exit(a, b, &main, 'm');
-	return (main);
+	if (!sort_slice(a, &info))
+		clean_and_exit(a, b, &info, 'm');
+	return (info);
 }

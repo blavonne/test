@@ -37,7 +37,7 @@ typedef struct		s_main
 	t_vector		**cmd_arr;
 	size_t			arr_size;//макс ёмкость массива векторов
 	size_t			arr_next;//следующий вектор, куда вставляем
-}					t_main;
+}					t_info;
 
 typedef struct		s_stack
 {
@@ -75,40 +75,42 @@ t_stack				*copy_stack(t_stack *src);
 void				push_in_stack(t_stack **stack, t_stack *next);
 
 int					check(int argc, char **argv);//del
+int					check_command(char *cmd);
 
-t_main				*create_main_struct(void);
+t_info				*create_main_struct(void);
 t_vector			*create_vector(void);
 t_vector			*copy_vector(t_vector *src);
 int					push_in_vector(t_vector **v, int value, size_t size);
 t_vector			**create_varr(void);
-int					push_in_varr(t_main **m, t_vector *tmp);
+int					push_in_varr(t_info **m, t_vector *tmp);
 
-void				clean_and_exit(t_stack **a, t_stack **b, t_main **m,\
+void				clean_and_exit(t_stack **a, t_stack **b, t_info **m,\
 					char option);
 void				destroy_map(t_map **map);
-void				destroy_main(t_main **m);
+void				destroy_main(t_info **m);
 void				destroy_vector(t_vector **v);
 void				destroy_stack(t_stack **stack);
 
-void				all_to_b(t_stack **a, t_stack **b, t_main **info);
+void				all_to_b(t_stack **a, t_stack **b, t_info **info);
 int					check_mid(t_stack *a, int middle);
 int					get_middle(t_stack **a);
-t_main				*get_commands(t_stack **a, t_stack **b);
+t_info				*get_commands(t_stack **a, t_stack **b);
 int					*timsort(int *arr, int size);
 int					*merge(int *arr, t_map **map);
 int					*insertion_sort(int *arr, t_map *map);
-void				all_to_a(t_stack **a, t_stack **b, t_main **m);
+void				all_to_a(t_stack **a, t_stack **b, t_info **m);
 t_vector			*ptr_to_top_b(t_stack *b, t_stack *ptr);
 int					ptr_to_a(t_stack *a, t_stack *ptr, t_vector **way);
-int					set_steps(t_stack *a, t_stack *b, t_stack *ptr, t_main **m);
+int					set_steps(t_stack *a, t_stack *b, t_stack *ptr, t_info **m);
 int					cat_vectors(t_vector **dest, t_vector *src);
 void				optimize_way(t_vector *way);
 
-void				print_info(t_main *info);//del
+void				print_info(t_info *info);//del
 void				check_ord(int *arr, int size);//del
 void				print_arr(int *arr, int size);//del
 void				print_stacks(t_stack *a, t_stack *b);//del
 void				print_vector(t_vector *way);//del
+long long int		ft_abs_ll(int nbr);
 
 
 #endif

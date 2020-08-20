@@ -3,8 +3,8 @@
 
 void			merge_r(unsigned char *a, unsigned char *b)
 {
-	int		i;
-	int		j;
+	size_t		i;
+	size_t		j;
 
 	i = 0;
 	j = 0;
@@ -31,8 +31,8 @@ void			merge_r(unsigned char *a, unsigned char *b)
 
 void			reset_size(unsigned char *b, t_vector *way)
 {
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	while (i < way->next && way->next > 1)
@@ -55,7 +55,7 @@ void			optimize_way(t_vector *way)
 {
 	unsigned char	*a;
 	unsigned char	*b;
-	int				i;
+	size_t			i;
 
 	i = 0;
 	a = 0;

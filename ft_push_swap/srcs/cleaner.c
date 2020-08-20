@@ -24,7 +24,7 @@ void		destroy_vector(t_vector **v)
 	free(*v);
 }
 
-void		destroy_main(t_main **m)
+void		destroy_main(t_info **m)
 {
 	size_t		i;
 
@@ -41,12 +41,12 @@ void		destroy_main(t_main **m)
 	free(*m);
 }
 
-void		clean_and_exit(t_stack **a, t_stack **b, t_main **m,\
+void		clean_and_exit(t_stack **a, t_stack **b, t_info **m,\
 		char option)
 {
-	(*a) ? destroy_stack(a) : 0;
-	(*b) ? destroy_stack(b) : 0;
-	(*m) ? destroy_main(m) : 0;
+	(a) && (*a) ? destroy_stack(a) : 0;
+	(b) && (*b) ? destroy_stack(b) : 0;
+	(m) && (*m) ? destroy_main(m) : 0;
 	put_errmsg_and_exit(option);
 }
 

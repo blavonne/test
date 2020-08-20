@@ -1,10 +1,10 @@
 #include "checker.h"
 
-t_main			*create_main_struct()
+t_info			*create_main_struct()
 {
-	t_main	*root;
+	t_info	*root;
 
-	if (!(root = (t_main *)malloc(sizeof(t_main))))
+	if (!(root = (t_info *)malloc(sizeof(t_info))))
 		return (NULL);
 	root->cmd_arr = NULL;
 	root->cmd_c = NULL;

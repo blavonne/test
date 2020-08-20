@@ -52,8 +52,10 @@ int		check(int argc, char **argv)
 //	print_stacks(a, b);
 	while ((count = get_next_line(0, &cmd)))
 	{
-		if (count < 0 || !check_command(cmd))
+		if (count < 0)
 			break ;
+		if (!check_command(cmd))
+			clean_and_exit(&a, &b, 0, 'd');
 		run_command(cmd, &a, &b);
 		free(cmd);
 	}
@@ -62,28 +64,3 @@ int		check(int argc, char **argv)
 	clean_and_exit(&a, &b, 0, 0);
 	return (0);
 }
-
-//int		main(int argc, char **argv)
-//{
-//	t_stack	*a;
-//	t_stack *b;
-//	char	*cmd_c;
-//	int		count;
-//
-//	if (argc == 1)
-//		put_errmsg_and_exit('d');
-//	a = read_argv(argc, argv);
-//	b = NULL;
-//	print_stacks(a, b);
-//	while ((count = get_next_line(0, &cmd_c)))
-//	{
-//		if (count < 0 || !check_command(cmd_c))
-//			break ;
-//		run_command(cmd_c, &a, &b);
-//		free(cmd_c);
-//	}
-//	free(cmd_c);
-//	check_asc_order(a, b) ? ft_printf("OK\n") : ft_printf("KO\n");
-//	clean_and_exit(&a, &b, 0, 0);
-//	return (0);
-//}

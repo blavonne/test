@@ -1,6 +1,6 @@
 #include "checker.h"
 
-int				set_steps(t_stack *a, t_stack *b, t_stack *ptr, t_main **m)
+int				set_steps(t_stack *a, t_stack *b, t_stack *ptr, t_info **m)
 {
 	t_vector	*way;
 

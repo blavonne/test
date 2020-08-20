@@ -62,7 +62,7 @@ t_vector			*copy_vector(t_vector *src)
 
 int					cat_vectors(t_vector **dest, t_vector *src)
 {
-	int				i;
+	size_t			i;
 	unsigned char	*src_arr;
 
 	if (src && (*dest))

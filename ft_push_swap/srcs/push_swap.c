@@ -1,8 +1,8 @@
 #include "checker.h"
 
-void	print_info(t_main *info)
+void	print_info(t_info *info)
 {
-	int				i;
+	size_t			i;
 	unsigned char	*arr;
 
 	i = 0;
@@ -23,10 +23,10 @@ void	print_info(t_main *info)
 	}
 }
 
-int		reset_info(t_main **info)
+int		reset_info(t_info **info)
 {
 	t_vector		*gnl;
-	int				i;
+	size_t			i;
 	unsigned char	*cmd_line;
 
 	i = 0;
@@ -50,7 +50,7 @@ int		main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_main *info;
+	t_info *info;
 
 	if (argc == 1)
 		put_errmsg_and_exit('d');

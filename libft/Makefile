@@ -13,6 +13,7 @@
 NAME = libft.a
 SRC = errors.c\
 		ft_abs.c\
+		ft_abs_ll.c\
 		ft_atoi.c\
 		ft_bzero.c\
 		ft_isalnum.c\

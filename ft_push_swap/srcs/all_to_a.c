@@ -2,7 +2,7 @@
 
 void			print_vector(t_vector *way)//del
 {
-	int				i;
+	size_t			i;
 	unsigned char	*arr;
 
 	i = 0;
@@ -28,7 +28,7 @@ void			print_vector(t_vector *way)//del
 static int		find_min_index(t_vector *count_steps_i)
 {
 	int		*arr;
-	int		i;
+	size_t	i;
 	int		min;
 
 	arr = count_steps_i->arr;
@@ -45,10 +45,10 @@ static int		find_min_index(t_vector *count_steps_i)
 	return (min);
 }
 
-static int		merge_commands(t_stack **a, t_stack **b, t_main **m,\
+static int		merge_commands(t_stack **a, t_stack **b, t_info **m,\
 		int count)
 {
-	int				i;
+	size_t			i;
 	unsigned char	*arr;
 
 //	ft_printf("====Start merge_commands func.====\n");
@@ -77,9 +77,9 @@ static int		merge_commands(t_stack **a, t_stack **b, t_main **m,\
 	return (1);
 }
 
-void			reset_cmd_arr(t_main **m)
+void			reset_cmd_arr(t_info **m)
 {
-	int		i;
+	size_t		i;
 
 	i = 0;
 	while (i < (*m)->arr_next)
@@ -95,7 +95,7 @@ void			reset_cmd_arr(t_main **m)
 
 //int		gl = 0;//del
 
-void			all_to_a(t_stack **a, t_stack **b, t_main **m)
+void			all_to_a(t_stack **a, t_stack **b, t_info **m)
 {
 	t_stack	*ptr;
 	int		shortest_way_index;
