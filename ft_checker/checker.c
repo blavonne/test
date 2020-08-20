@@ -46,7 +46,7 @@ int		check(int argc, char **argv)
 	int		count;
 
 	if (argc == 1)
-		put_errmsg_and_exit('d');
+		put_errmsg_and_exit('a');
 	a = read_argv(argc, argv);
 	b = NULL;
 //	print_stacks(a, b);
@@ -55,7 +55,7 @@ int		check(int argc, char **argv)
 		if (count < 0)
 			break ;
 		if (!check_command(cmd))
-			clean_and_exit(&a, &b, 0, 'd');
+			clean_and_exit(&a, &b, 0, 'c');
 		run_command(cmd, &a, &b);
 		free(cmd);
 	}

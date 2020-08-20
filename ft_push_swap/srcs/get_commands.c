@@ -37,6 +37,8 @@ int			sort_slice(t_stack **a, t_info **m)
 	i = 0;
 	if (check_asc_order((*a), 0))
 		return (1);
+	if (!(ft_isslice(*a)))
+		return (0);
 	ra = rotate(a, m, "ra");
 	rra = rotate(a, m, "rra");
 	if (ra < rra)
@@ -68,8 +70,8 @@ t_info		*get_commands(t_stack **a, t_stack **b)
 //		ft_printf("Is slice.\n");
 //	else
 //		ft_printf("Is NOT slice.\n");
-	if (!(ft_isslice(*a)))
-		return (0);
+//	if (!(ft_isslice(*a)))
+//		return (0);
 	if (!sort_slice(a, &info))
 		clean_and_exit(a, b, &info, 'm');
 	return (info);
