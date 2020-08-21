@@ -137,6 +137,7 @@ void			all_to_a(t_stack **a, t_stack **b, t_info **m)
 		if (!merge_commands(a, b, m, shortest_way_index))
 			clean_and_exit(a, b, m, 'm');
 		reset_cmd_arr(m);
+//		return ;
 		if ((*b) == NULL)
 			return ;
 		else

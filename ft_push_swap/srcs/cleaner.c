@@ -32,13 +32,20 @@ void		destroy_main(t_info **m)
 	if ((*m))
 	{
 		destroy_vector(&(*m)->cmd_c);
+		(*m)->cmd_c = NULL;
 		destroy_vector(&(*m)->count_steps_i);
+		(*m)->count_steps_i = NULL;
 		if ((*m)->cmd_arr)
 			while (i < (*m)->arr_size)
-				destroy_vector(&(*m)->cmd_arr[i++]);
+			{
+				destroy_vector(&(*m)->cmd_arr[i]);
+				(*m)->cmd_arr[i++] = NULL;
+			}
 		free((*m)->cmd_arr);
+		(*m)->cmd_arr = NULL;
 	}
 	free(*m);
+	(*m) = NULL;
 }
 
 void		clean_and_exit(t_stack **a, t_stack **b, t_info **m,\
