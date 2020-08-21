@@ -85,17 +85,12 @@ int				reset_cmd_arr(t_info **m)
 	i = 0;
 
 	destroy_vector(&(*m)->count_steps_i);
-	(*m)->count_steps_i = NULL;
-	if ((*m)->cmd_arr)
-		while (i < (*m)->arr_size)
-		{
-			destroy_vector(&(*m)->cmd_arr[i]);
-			(*m)->cmd_arr[i++] = NULL;
-		}
-	free((*m)->cmd_arr);
-	(*m)->cmd_arr = NULL;
-	(*m)->count_steps_i = create_vector();
-	(*m)->cmd_arr = create_varr();
+	destroy_varr(m);
+	if (!((*m)->count_steps_i = create_vector()))
+		return (0);
+	if (!((*m)->cmd_arr = create_varr()))
+		return (0);
+	(*m)->arr_size = 1;
 	(*m)->arr_next = 0;
 //	while (i < (*m)->arr_next)
 //	{
@@ -108,7 +103,23 @@ int				reset_cmd_arr(t_info **m)
 	return (1);
 }
 
-//int		gl = 0;//del
+void			print_int_vector(t_vector *v)
+{
+	size_t		i;
+	int			*arr;
+
+	i = 0;
+	if (v)
+	{
+		arr = v->arr;
+		while (i < v->next)
+		{
+			ft_printf("%d ", arr[i]);
+			i++;
+		}
+		ft_printf("\n");
+	}
+}
 
 void			all_to_a(t_stack **a, t_stack **b, t_info **m)
 {
@@ -117,27 +128,22 @@ void			all_to_a(t_stack **a, t_stack **b, t_info **m)
 
 	if (*b)
 	{
-		//	ft_printf("%i iteration start.\n", gl);
-//	gl++;
+		(*m)->cmd_arr = create_varr();
 		ptr = (*b);
 		while (ptr)
 		{
-//		ft_printf("Initial statement:\n");
-//		print_stacks(*a, *b);
-//		ft_printf("Current value: %d.\n", ptr->value);
 			if (!set_steps((*a), (*b), ptr, m))
 				clean_and_exit(a, b, m, 'm');
 			ptr = ptr->next;
 		}
+		ft_printf("all_to_a.\n");
+		print_int_vector((*m)->count_steps_i);
 		shortest_way_index = find_min_index((*m)->count_steps_i);
 		if (shortest_way_index < 0)
 			clean_and_exit(a, b, m, 'm');
-//	ft_printf("%i iteration middle.\n", gl);
-//	ft_printf("Min is: %d.\nStart insertion.\n", shortest_way_index);
 		if (!merge_commands(a, b, m, shortest_way_index))
 			clean_and_exit(a, b, m, 'm');
 		reset_cmd_arr(m);
-//		return ;
 		if ((*b) == NULL)
 			return ;
 		else

@@ -11,8 +11,7 @@ t_info			*create_main_struct()
 	root->count_steps_i = NULL;
 	root->cmd_c = create_vector();
 	root->count_steps_i = create_vector();
-	root->cmd_arr = create_varr();
-	if (!root->cmd_c || !root->count_steps_i || !root->cmd_arr)
+	if (!root->cmd_c || !root->count_steps_i)
 	{
 		destroy_main(&root);
 		return (NULL);

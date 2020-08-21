@@ -28,6 +28,8 @@ int				set_steps(t_stack *a, t_stack *b, t_stack *ptr, t_info **m)
 		destroy_vector(&way);
 		return(0);
 	}
+	ft_printf("set_steps.\n");
+	print_int_vector((*m)->count_steps_i);
 //	ft_printf("====End set steps func.====\n");
 //	ft_printf("set_steps func\n");
 //	print_vector((*m)->cmd_c);

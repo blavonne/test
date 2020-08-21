@@ -18,7 +18,7 @@ static int			resize_varr(t_info **v)
 
 int					push_in_varr(t_info **m, t_vector *tmp)
 {
-	if ((*m)->arr_next + 1 > (*m)->arr_size)
+	while ((*m)->arr_next + 1 > (*m)->arr_size)
 		if (!resize_varr(m))
 			return (0);
 	(*m)->cmd_arr[(*m)->arr_next] = tmp;

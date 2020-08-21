@@ -21,7 +21,24 @@ void		destroy_stack(t_stack **stack)
 void		destroy_vector(t_vector **v)
 {
 	(*v) ? free((*v)->arr) : 0;
+	(*v) ? (*v)->arr = NULL : 0;
 	free(*v);
+	(*v) = NULL;
+}
+
+void		destroy_varr(t_info **m)
+{
+	int		i;
+
+	i = 0;
+	if ((*m)->cmd_arr)
+		while (i < (*m)->arr_size)
+		{
+			destroy_vector(&(*m)->cmd_arr[i]);
+			(*m)->cmd_arr[i++] = NULL;
+		}
+	free((*m)->cmd_arr);
+	(*m)->cmd_arr = NULL;
 }
 
 void		destroy_main(t_info **m)
@@ -35,14 +52,7 @@ void		destroy_main(t_info **m)
 		(*m)->cmd_c = NULL;
 		destroy_vector(&(*m)->count_steps_i);
 		(*m)->count_steps_i = NULL;
-		if ((*m)->cmd_arr)
-			while (i < (*m)->arr_size)
-			{
-				destroy_vector(&(*m)->cmd_arr[i]);
-				(*m)->cmd_arr[i++] = NULL;
-			}
-		free((*m)->cmd_arr);
-		(*m)->cmd_arr = NULL;
+		destroy_varr(m);
 	}
 	free(*m);
 	(*m) = NULL;

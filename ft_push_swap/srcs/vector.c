@@ -21,7 +21,7 @@ int					push_in_vector(t_vector **v, int value, size_t size)
 	size_t			i;
 
 	i = (*v)->next;
-	if (size * (*v)->next + size >= (*v)->size)
+	while (size * (*v)->next + size > (*v)->size)
 		if (!resize(v))
 			return (0);
 	if (size == sizeof(char))

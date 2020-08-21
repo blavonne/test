@@ -7,8 +7,8 @@
 # include <limits.h>
 
 # define BIGINT_SIZE	10
-# define V_SIZE			256u
-# define VARR_SIZE		30u
+# define V_SIZE			1u
+# define VARR_SIZE		1u
 
 # define RA		0b00000001u
 # define RB		0b00000010u
@@ -92,6 +92,7 @@ void				destroy_map(t_map **map);
 void				destroy_main(t_info **m);
 void				destroy_vector(t_vector **v);
 void				destroy_stack(t_stack **stack);
+void				destroy_varr(t_info **m);
 
 void				all_to_b(t_stack **a, t_stack **b, t_info **info);
 int					check_mid(t_stack *a, int middle);
@@ -112,5 +113,6 @@ void				check_ord(int *arr, int size);//del
 void				print_arr(int *arr, int size);//del
 void				print_stacks(t_stack *a, t_stack *b);//del
 void				print_vector(t_vector *way);//del
+void				print_int_vector(t_vector *v);//del
 
 #endif
