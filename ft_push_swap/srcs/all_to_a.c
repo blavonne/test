@@ -78,11 +78,24 @@ static int		merge_commands(t_stack **a, t_stack **b, t_info **m,\
 	return (1);
 }
 
-void			reset_cmd_arr(t_info **m)
+int				reset_cmd_arr(t_info **m)
 {
 	size_t		i;
 
 	i = 0;
+
+//	if ((*m)->cmd_arr)
+//		while (i < (*m)->arr_size)
+//		{
+//			free((*m)->cmd_arr[i]);
+//			(*m)->cmd_arr[i++] = NULL;
+//		}
+//	free((*m)->cmd_arr);
+//	(*m)->cmd_arr = NULL;
+//	if (!((*m)->cmd_arr = create_varr()))
+//		return (0);
+//	destroy_vector(&(*m)->count_steps_i);
+//	(*m)->arr_next = 0;
 	while (i < (*m)->arr_next)
 	{
 		ft_memset((*m)->cmd_arr[i]->arr, 0, (*m)->cmd_arr[i]->next);
@@ -92,6 +105,7 @@ void			reset_cmd_arr(t_info **m)
 	ft_memset((*m)->count_steps_i->arr, 0, sizeof(int) *\
 	(*m)->count_steps_i->next);
 	(*m)->count_steps_i->next = 0;
+	return (1);
 }
 
 //int		gl = 0;//del

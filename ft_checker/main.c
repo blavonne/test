@@ -16,10 +16,7 @@ int		main(int argc, char **argv)
 		if (count < 0)
 			break ;
 		if (!check_command(cmd))
-		{
-			ft_printf("This is command: [%s]\n", cmd);
 			clean_and_exit(&a, &b, 0, 'c');
-		}
 		run_command(cmd, &a, &b);
 		free(cmd);
 	}

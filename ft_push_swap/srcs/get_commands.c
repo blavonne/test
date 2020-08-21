@@ -10,6 +10,7 @@ int			rotate(t_stack **a, t_info **m, char *cmd)
 
 	c = (ft_strequ(cmd, "ra")) ? RA : RRA;
 	i = 0;
+	tmp = NULL;
 	if (!(copy = copy_stack((*a))))
 		return (0);
 	if (!(tmp = create_vector()))

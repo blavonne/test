@@ -35,7 +35,7 @@ void		destroy_main(t_info **m)
 		destroy_vector(&(*m)->count_steps_i);
 		if ((*m)->cmd_arr)
 			while (i < (*m)->arr_size)
-				free((*m)->cmd_arr[i++]);
+				destroy_vector(&(*m)->cmd_arr[i++]);
 		free((*m)->cmd_arr);
 	}
 	free(*m);
