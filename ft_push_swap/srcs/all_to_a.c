@@ -84,27 +84,27 @@ int				reset_cmd_arr(t_info **m)
 
 	i = 0;
 
-//	if ((*m)->cmd_arr)
-//		while (i < (*m)->arr_size)
-//		{
-//			free((*m)->cmd_arr[i]);
-//			(*m)->cmd_arr[i++] = NULL;
-//		}
-//	free((*m)->cmd_arr);
-//	(*m)->cmd_arr = NULL;
-//	if (!((*m)->cmd_arr = create_varr()))
-//		return (0);
-//	destroy_vector(&(*m)->count_steps_i);
-//	(*m)->arr_next = 0;
-	while (i < (*m)->arr_next)
-	{
-		ft_memset((*m)->cmd_arr[i]->arr, 0, (*m)->cmd_arr[i]->next);
-		i++;
-	}
+	destroy_vector(&(*m)->count_steps_i);
+	(*m)->count_steps_i = NULL;
+	if ((*m)->cmd_arr)
+		while (i < (*m)->arr_size)
+		{
+			destroy_vector(&(*m)->cmd_arr[i]);
+			(*m)->cmd_arr[i++] = NULL;
+		}
+	free((*m)->cmd_arr);
+	(*m)->cmd_arr = NULL;
+	(*m)->count_steps_i = create_vector();
+	(*m)->cmd_arr = create_varr();
 	(*m)->arr_next = 0;
-	ft_memset((*m)->count_steps_i->arr, 0, sizeof(int) *\
-	(*m)->count_steps_i->next);
-	(*m)->count_steps_i->next = 0;
+//	while (i < (*m)->arr_next)
+//	{
+//		ft_memset((*m)->cmd_arr[i]->arr, 0, (*m)->cmd_arr[i]->next);
+//		i++;
+//	}
+//	(*m)->arr_next = 0;
+//	ft_memset((*m)->count_steps_i->arr, 0, sizeof(int) *\
+//	(*m)->count_steps_i->next);
 	return (1);
 }
 

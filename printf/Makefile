@@ -53,7 +53,7 @@ $(NAME): $(OS)
 
 %.o: %.c $(INCLUDES)printf.h $(INCLUDES)fractional.h $(INCLUDES)xray.h\
 $(INCLUDES)integral.h
-	gcc -c $< -o $@ -I $(INCLUDES) $(FLAGS) $(L_FLAGS)
+	gcc -c $< -o $@ -I $(INCLUDES) -I $(L_ROOT) $(FLAGS)
 
 clean:
 	rm -rf $(OS)
