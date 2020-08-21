@@ -57,6 +57,8 @@ void			optimize_way(t_vector *way)
 	unsigned char	*b;
 	size_t			i;
 
+//	ft_printf("optimize_way default\n");
+//	print_vector(way);
 	i = 0;
 	a = 0;
 	b = way->arr;
@@ -71,4 +73,6 @@ void			optimize_way(t_vector *way)
 	}
 	a ? merge_r(a, b) : 0;
 	a ? reset_size(b, way) : 0;
+//	ft_printf("optimize_way end\n");
+//	print_vector(way);
 }

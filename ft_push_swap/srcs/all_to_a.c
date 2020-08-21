@@ -15,6 +15,7 @@ void			print_vector(t_vector *way)//del
 		arr[i] == RR ? ft_printf("rr ") : 0;
 		arr[i] == SA ? ft_printf("sa ") : 0;
 		arr[i] == SB ? ft_printf("sb ") : 0;
+		arr[i] == SS ? ft_printf("ss ") : 0;
 		arr[i] == PA ? ft_printf("pa ") : 0;
 		arr[i] == PB ? ft_printf("pb ") : 0;
 		arr[i] == RRA ? ft_printf("rra ") : 0;

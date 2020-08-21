@@ -21,5 +21,7 @@ int				set_steps(t_stack *a, t_stack *b, t_stack *ptr, t_info **m)
 	push_in_varr(m, way);
 	push_in_vector(&(*m)->count_steps_i, way->next, sizeof(int));
 //	ft_printf("====End set steps func.====\n");
+//	ft_printf("set_steps func\n");
+//	print_vector((*m)->cmd_c);
 	return (1);
 }

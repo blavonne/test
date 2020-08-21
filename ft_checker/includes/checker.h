@@ -112,7 +112,5 @@ void				check_ord(int *arr, int size);//del
 void				print_arr(int *arr, int size);//del
 void				print_stacks(t_stack *a, t_stack *b);//del
 void				print_vector(t_vector *way);//del
-//long long int		ft_abs_ll(int nbr);
-
 
 #endif

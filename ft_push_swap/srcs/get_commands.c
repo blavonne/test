@@ -66,12 +66,6 @@ t_info		*get_commands(t_stack **a, t_stack **b)
 		clean_and_exit(a, b, 0, 'm');
 	all_to_b(a, b, &info);
 	all_to_a(a, b, &info);
-//	if (ft_isslice(*a))
-//		ft_printf("Is slice.\n");
-//	else
-//		ft_printf("Is NOT slice.\n");
-//	if (!(ft_isslice(*a)))
-//		return (0);
 	if (!sort_slice(a, &info))
 		clean_and_exit(a, b, &info, 'm');
 	return (info);
