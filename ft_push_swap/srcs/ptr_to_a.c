@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ptr_to_a.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/22 02:35:07 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/22 02:35:31 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 static int		try_to_push(int count, unsigned char cmd, t_vector **dest)
@@ -23,7 +35,6 @@ static int		try_ra(t_stack *a, t_stack *ptr, t_vector **ra)
 	long long int	min;
 	int				i;
 
-//	ft_printf("====Start try_ra func.====\n");
 	i = 1;
 	if (ptr && a)
 	{
@@ -41,7 +52,6 @@ static int		try_ra(t_stack *a, t_stack *ptr, t_vector **ra)
 		i++;
 		a = a->next;
 	}
-//	ft_printf("====End try_rra func.====\n");
 	return (try_to_push(ra_count, RA, ra));
 }
 
@@ -52,7 +62,6 @@ static int		try_rra(t_stack *a, t_stack *ptr, t_vector **rra)
 	int				i;
 	t_stack			*copy;
 
-//	ft_printf("====Start try_rra func.====\n");
 	if (!(copy = copy_stack(a)))
 		return (0);
 	i = 0;
@@ -72,7 +81,6 @@ static int		try_rra(t_stack *a, t_stack *ptr, t_vector **rra)
 		i++;
 	}
 	destroy_stack(&copy);
-//	ft_printf("====End try_rra func.====\n");
 	return (try_to_push(rra_count, RRA, rra));
 }
 
@@ -98,7 +106,6 @@ int				ptr_to_a(t_stack *a, t_stack *ptr, t_vector **way)
 	t_vector	*rra;
 	t_vector	*less;
 
-//	ft_printf("====Start ptr_to_a func.====\n");
 	if (!(ra = create_vector()))
 		return (0);
 	if (!(rra = create_vector()))
@@ -117,6 +124,5 @@ int				ptr_to_a(t_stack *a, t_stack *ptr, t_vector **way)
 	destroy_vector(&rra);
 	if (!less || !insert_way(way, &less))
 		return (0);
-//	ft_printf("====End ptr_to_a func.====\n");
 	return (1);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/22 02:25:16 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/22 02:25:40 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 void	print_info(t_info *info)
@@ -28,7 +40,7 @@ int		main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_info *info;
+	t_info	*info;
 
 	if (argc == 1)
 		put_errmsg_and_exit('a');

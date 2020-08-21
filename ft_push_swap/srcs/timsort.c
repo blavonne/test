@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   timsort.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/22 02:37:55 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/22 02:41:28 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 /*
@@ -61,7 +73,6 @@ static int		set_end(int size, int minrun, int *arr, int end)
 		while (end + 1 < size && end + 1 < minrun && arr[end] >\
 			arr[end + 1])
 			end++;
-
 	return (end);
 }
 
@@ -98,9 +109,5 @@ int				*timsort(int *arr, int size)
 	}
 	arr = merge(arr, &map);
 	destroy_map(&map);
-//	ft_printf("Array after sort: ");
-//	print_arr(arr, size);//потом убрать
-//	ft_printf("Sort status: ");
-//	check_ord(arr, size);//убрать потом
 	return (arr);
 }

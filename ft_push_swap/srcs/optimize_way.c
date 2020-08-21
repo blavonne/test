@@ -1,5 +1,16 @@
-#include "checker.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   optimize_way.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/22 02:39:15 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/22 02:40:17 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "checker.h"
 
 void			merge_r(unsigned char *a, unsigned char *b)
 {
@@ -42,7 +53,7 @@ void			reset_size(unsigned char *b, t_vector *way)
 			j = i;
 			while (j + 1 < way->next)
 			{
-				b[j] = b [j + 1];
+				b[j] = b[j + 1];
 				j++;
 			}
 			way->next--;
@@ -57,8 +68,6 @@ void			optimize_way(t_vector *way)
 	unsigned char	*b;
 	size_t			i;
 
-//	ft_printf("optimize_way default\n");
-//	print_vector(way);
 	i = 0;
 	a = 0;
 	b = way->arr;
@@ -73,6 +82,4 @@ void			optimize_way(t_vector *way)
 	}
 	a ? merge_r(a, b) : 0;
 	a ? reset_size(b, way) : 0;
-//	ft_printf("optimize_way end\n");
-//	print_vector(way);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   all_to_a.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/22 02:36:44 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/22 02:38:45 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 static int		find_min_index(t_vector *count_steps_i)
@@ -26,7 +38,6 @@ static int		merge_commands(t_stack **a, t_stack **b, t_info **m,\
 	size_t			i;
 	unsigned char	*arr;
 
-//	ft_printf("====Start merge_commands func.====\n");
 	i = 0;
 	if (!(*m)->arr_size || (*m)->cmd_arr == NULL ||\
 	(*m)->cmd_arr[count] == NULL)
@@ -48,7 +59,6 @@ static int		merge_commands(t_stack **a, t_stack **b, t_info **m,\
 		arr[i] == RRR ? run_command("rrr", a, b) : 0;
 		i++;
 	}
-//	ft_printf("====End merge_commands func.====\n");
 	return (1);
 }
 
@@ -57,40 +67,13 @@ int				reset_cmd_arr(t_info **m)
 	size_t		i;
 
 	i = 0;
-
 	destroy_vector(&(*m)->count_steps_i);
 	destroy_varr(m);
 	if (!((*m)->count_steps_i = create_vector()))
 		return (0);
 	(*m)->arr_size = 1;
 	(*m)->arr_next = 0;
-//	while (i < (*m)->arr_next)
-//	{
-//		ft_memset((*m)->cmd_arr[i]->arr, 0, (*m)->cmd_arr[i]->next);
-//		i++;
-//	}
-//	(*m)->arr_next = 0;
-//	ft_memset((*m)->count_steps_i->arr, 0, sizeof(int) *\
-//	(*m)->count_steps_i->next);
 	return (1);
-}
-
-void			print_int_vector(t_vector *v)
-{
-	size_t		i;
-	int			*arr;
-
-	i = 0;
-	if (v)
-	{
-		arr = v->arr;
-		while (i < v->next)
-		{
-			ft_printf("%d ", arr[i]);
-			i++;
-		}
-		ft_printf("\n");
-	}
 }
 
 void			all_to_a(t_stack **a, t_stack **b, t_info **m)

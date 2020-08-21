@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   timsort_merge.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/22 02:36:01 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/22 02:36:16 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 /*
@@ -97,8 +109,6 @@ int				*merge(int *arr, t_map **map)
 		{
 			arr = (x && z && x > z) ? merge2(arr, map, i, i + 1) :\
 			merge2(arr, map, i - 1, i);
-//			ft_printf("Merge status: ");//delete
-//			check_ord(&arr[(*map)->begin[i]], (*map)->size[i]);//delete
 			i = 1;
 		}
 	}

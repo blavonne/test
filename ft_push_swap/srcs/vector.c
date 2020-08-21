@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vector.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/22 02:32:49 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/22 02:34:04 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 static int			resize(t_vector **v)
@@ -79,7 +91,7 @@ int					cat_vectors(t_vector **dest, t_vector *src)
 	return (1);
 }
 
-t_vector			*create_vector()
+t_vector			*create_vector(void)
 {
 	t_vector	*tmp;
 
