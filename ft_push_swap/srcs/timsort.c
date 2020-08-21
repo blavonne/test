@@ -1,18 +1,5 @@
 #include "checker.h"
 
-void			print_arr(int *arr, int size)//del
-{
-	int		i;
-
-	i = 0;
-	while (i < size)
-	{
-		ft_printf("[%i]%-3d ", i, arr[i]);
-		i++;
-	}
-	ft_printf("\n");
-}
-
 /*
 ** ========MINRUN========
 ** get 6 highest bits of N (64 for int64) and add 1 if there is at least one

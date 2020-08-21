@@ -1,45 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_llu.c                                      :+:      :+:    :+:   */
+/*   ft_itoa_iu.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 03:48:55 by blavonne          #+#    #+#             */
-/*   Updated: 2020/08/06 17:54:23 by blavonne         ###   ########.fr       */
+/*   Created: 2020/07/23 03:43:59 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/06 17:54:15 by blavonne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-char	*itoa_ll(long long int decimal)
+char	*ft_itoa(int decimal)
 {
-	int			len;
-	long long	temp;
-	char		*res;
-	int			index;
+	int		len;
+	int		temp;
+	char	*res;
+	int		index;
 
 	len = 1;
 	temp = decimal;
 	while ((temp = temp / 10))
 		len++;
+	decimal < 0 ? len++ : 0;
 	if (!(res = ft_strnew(len)))
 		return (NULL);
+	decimal < 0 ? res[0] = '-' : 0;
 	while (len--)
 	{
-		index = ft_abs((int)(decimal % 10));
+		index = ft_abs(decimal % 10);
 		res[len] = RADIX[index];
 		decimal /= 10;
 	}
 	return (res);
 }
 
-char	*itoa_llu(unsigned long long int decimal, int base)
+char	*ft_itoa_u(unsigned int decimal, int base)
 {
-	int						len;
-	unsigned long long		temp;
-	char					*res;
-	int						index;
+	int				len;
+	unsigned int	temp;
+	char			*res;
+	int				index;
 
 	len = 1;
 	temp = decimal;

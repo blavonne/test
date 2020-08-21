@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 03:17:13 by blavonne          #+#    #+#             */
-/*   Updated: 2020/08/06 17:57:24 by blavonne         ###   ########.fr       */
+/*   Created: 2020/07/23 03:15:46 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/06 17:56:42 by blavonne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-char	*ft_strnew(size_t size)
+char		*ft_strchr(const char *s, int c)
 {
-	char	*obj;
+	int		i;
 
-	if (size + 1 == 0)
-		return (NULL);
-	obj = 0;
-	if (!(obj = (char *)malloc(size + 1)))
-		return (NULL);
-	ft_bzero(obj, size + 1);
-	return (obj);
+	i = 0;
+	if (c == '\0')
+		return ((char *)&s[ft_strlen(s)]);
+	while (s[i])
+	{
+		if (s[i] == c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	return (NULL);
 }

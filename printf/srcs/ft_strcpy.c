@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 03:15:46 by blavonne          #+#    #+#             */
-/*   Updated: 2020/08/06 17:56:42 by blavonne         ###   ########.fr       */
+/*   Created: 2020/08/06 17:56:51 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/06 17:56:53 by blavonne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-char		*ft_strchr(const char *s, int c)
+char	*ft_strcpy(char *dst, const char *src)
 {
 	int		i;
 
 	i = 0;
-	if (c == '\0')
-		return ((char *)&s[ft_strlen(s)]);
-	while (s[i])
+	while (src[i])
 	{
-		if (s[i] == c)
-			return ((char *)&s[i]);
+		dst[i] = src[i];
 		i++;
 	}
-	return (NULL);
+	dst[i] = '\0';
+	return (dst);
 }

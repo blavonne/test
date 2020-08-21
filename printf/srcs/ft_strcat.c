@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_toupper.c                                   :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 03:14:58 by blavonne          #+#    #+#             */
-/*   Updated: 2020/08/06 17:56:22 by blavonne         ###   ########.fr       */
+/*   Created: 2020/08/06 17:56:33 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/06 17:56:35 by blavonne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-void	ft_str_toupper(char *str)
+char	*ft_strcat(char *s1, const char *s2)
 {
 	int		i;
+	int		j;
 
 	i = 0;
-	while (str && str[i])
+	j = 0;
+	if (s1[i])
+		i = ft_strlen(s1);
+	while (s2[j])
 	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-			str[i] = (char)ft_toupper(str[i]);
+		s1[i] = s2[j];
 		i++;
+		j++;
 	}
+	s1[i] = '\0';
+	return (s1);
 }

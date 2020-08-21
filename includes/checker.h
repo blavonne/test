@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/22 01:42:34 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/22 01:42:36 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CHECKER_H
 # define CHECKER_H
 
@@ -22,21 +34,20 @@
 # define PB		0b01000000u
 # define PA		0b10000000u
 
-
 typedef struct		s_vector
 {
 	void			*arr;
-	size_t			size;//макс размер
-	size_t			next;//след ячейка, куда ставим
+	size_t			size;
+	size_t			next;
 }					t_vector;
 
 typedef struct		s_main
 {
 	t_vector		*cmd_c;
-	t_vector		*count_steps_i;//cmd-arr-cur?
+	t_vector		*count_steps_i;
 	t_vector		**cmd_arr;
-	size_t			arr_size;//макс ёмкость массива векторов
-	size_t			arr_next;//следующий вектор, куда вставляем
+	size_t			arr_size;
+	size_t			arr_next;
 }					t_info;
 
 typedef struct		s_stack
@@ -53,7 +64,7 @@ typedef struct		s_map
 	int				*size;
 }					t_map;
 
-typedef struct		bigint
+typedef struct		s_bigint
 {
 	int				bigint[BIGINT_SIZE];
 	int				length;
@@ -63,21 +74,17 @@ typedef struct		bigint
 t_stack				*read_argv(int argc, char **argv);
 t_bigint			initialize_big(t_bigint *elephant);
 int					set_len_big(t_bigint *elephant);
-
-void				run_command(char *command, t_stack **a, t_stack **b);
-
-int					check_asc_order(t_stack *a, t_stack *b);
-int					check_dsc_order(t_stack *a);
-int					ft_isslice(t_stack *a);
-
 t_stack				*create_stack(void);
 t_stack				*copy_stack(t_stack *src);
 int					push_in_stack(t_stack **stack, int value);
 int					get_number(char *str, t_stack **stack);
 int					try_to_split(char *str, t_stack **stack);
 
-int					check(int argc, char **argv);//del
+void				run_command(char *command, t_stack **a, t_stack **b);
 int					check_command(char *cmd);
+
+int					check_asc_order(t_stack *a, t_stack *b);
+int					ft_isslice(t_stack *a);
 
 t_info				*create_main_struct(void);
 t_vector			*create_vector(void);
@@ -108,11 +115,6 @@ int					set_steps(t_stack *a, t_stack *b, t_stack *ptr, t_info **m);
 int					cat_vectors(t_vector **dest, t_vector *src);
 void				optimize_way(t_vector *way);
 
-void				print_info(t_info *info);//del
-void				check_ord(int *arr, int size);//del
-void				print_arr(int *arr, int size);//del
-void				print_stacks(t_stack *a, t_stack *b);//del
-void				print_vector(t_vector *way);//del
-void				print_int_vector(t_vector *v);//del
+void				print_info(t_info *info);
 
 #endif

@@ -14,28 +14,28 @@ add_library(ftprintf STATIC
         floats/integral_base.c
         floats/integral_creation.c
         floats/integral_to_str.c
-        libft/errors.c
-        libft/ft_abs.c
-        libft/ft_bzero.c
-        libft/ft_isdigit.c
-        libft/ft_itoa.c
-        libft/ft_itoa_lu.c
-        libft/ft_itoa_llu.c
-        libft/ft_memset.c
-        libft/ft_pow.c
-        libft/ft_putchar.c
-        libft/ft_putstr.c
-        libft/ft_putstr_fd.c
-        libft/ft_str_tolower.c
-        libft/ft_str_toupper.c
-        libft/ft_strcat.c
-        libft/ft_strchr.c
-        libft/ft_strcpy.c
-        libft/ft_strjoin.c
-        libft/ft_strlen.c
-        libft/ft_strnew.c
-        libft/ft_tolower.c
-        libft/ft_toupper.c
+        srcs/errors.c
+        srcs/ft_strcpy.c
+        srcs/ft_putstr_fd.c
+        srcs/ft_abs.c
+        srcs/ft_bzero.c
+        srcs/ft_isdigit.c
+        srcs/ft_itoa.c
+        srcs/ft_itoa_llu.c
+        srcs/ft_itoa_lu.c
+        srcs/ft_memset.c
+        srcs/ft_pow.c
+        srcs/ft_putchar.c
+        srcs/ft_putstr.c
+        srcs/ft_str_tolower.c
+        srcs/ft_str_toupper.c
+        srcs/ft_strcat.c
+        srcs/ft_strchr.c
+        srcs/ft_strjoin.c
+        srcs/ft_strlen.c
+        srcs/ft_strnew.c
+        srcs/ft_tolower.c
+        srcs/ft_toupper.c
         srcs/chars_conversion.c
         srcs/chars_printing.c
         srcs/check_info.c

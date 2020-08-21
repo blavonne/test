@@ -1,28 +1,5 @@
 #include "checker.h"
 
-void			check_ord(int *arr, int size)//del
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	while (i < size)
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (arr[i] >= arr[j])
-			{
-				ft_printf("KO\n");
-				return ;
-			}
-			j++;
-		}
-		i++;
-	}
-	ft_printf("OK\n");
-}
-
 /*
 ** ==========MERGE_SORT==========
 ** in this func we create temp-array and copy left-array (x) in temp

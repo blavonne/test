@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 17:57:02 by blavonne          #+#    #+#             */
-/*   Updated: 2020/08/06 17:57:04 by blavonne         ###   ########.fr       */
+/*   Created: 2020/07/23 03:17:13 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/06 17:57:24 by blavonne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strnew(size_t size)
 {
-	size_t	size;
-	char	*cat;
+	char	*obj;
 
-	if (!s1 || !s2)
+	if (size + 1 == 0)
 		return (NULL);
-	size = ft_strlen(s1) + ft_strlen(s2);
-	if (size < ft_strlen(s1) || size < ft_strlen(s2))
+	obj = 0;
+	if (!(obj = (char *)malloc(size + 1)))
 		return (NULL);
-	if (!(cat = ft_strnew(size)))
-		return (NULL);
-	cat = ft_strcat(cat, s1);
-	cat = ft_strcat(cat, s2);
-	return (cat);
+	ft_bzero(obj, size + 1);
+	return (obj);
 }

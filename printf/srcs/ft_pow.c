@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 17:56:02 by blavonne          #+#    #+#             */
-/*   Updated: 2020/08/06 17:56:06 by blavonne         ###   ########.fr       */
+/*   Created: 2020/08/06 17:55:36 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/06 17:55:39 by blavonne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-
-void	ft_putstr_fd(char const *s, int fd)
+double		ft_pow(double basis, int exponent)
 {
-	if (s && *s)
-		write(fd, s, ft_strlen(s));
+	double			base;
+	long long int	exp;
+
+	if (exponent == 0)
+		return (1);
+	base = basis;
+	exp = exponent;
+	exp = exp < 0 ? -exp : exp;
+	while (--exp)
+		basis *= base;
+	if (exponent < 0)
+		return (1. / basis);
+	else
+		return (basis);
 }

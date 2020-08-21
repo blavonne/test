@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   commander.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/22 01:41:03 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/22 01:41:06 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 static void		run_r(t_stack **stack)
@@ -68,7 +80,7 @@ static void		run_rr(t_stack **stack)
 	}
 }
 
-void		run_command(char *command, t_stack **a, t_stack **b)
+void			run_command(char *command, t_stack **a, t_stack **b)
 {
 	ft_strequ("sa", command) ? run_s(a) : 0;
 	ft_strequ("sb", command) ? run_s(b) : 0;
@@ -93,8 +105,4 @@ void		run_command(char *command, t_stack **a, t_stack **b)
 		run_rr(a);
 		run_rr(b);
 	}
-//	ft_printf("Commander. Operation [%s] is done.\n", command);
-//	a && b ? print_stacks(*a, *b) : 0;
-//	!a && b ? print_stacks(0, *b) : 0;
-//	a && !b ? print_stacks(*a, 0) : 0;
 }

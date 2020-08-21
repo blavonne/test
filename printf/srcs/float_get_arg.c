@@ -6,14 +6,14 @@
 /*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 17:58:55 by blavonne          #+#    #+#             */
-/*   Updated: 2020/08/06 17:58:56 by blavonne         ###   ########.fr       */
+/*   Updated: 2020/08/22 01:28:22 by blavonne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static void			ft_round_five(t_integral *z, t_fractional *frac, t_format\
-*info)
+static void			ft_round_five(t_integral *z, t_fractional *frac,\
+		t_format *info)
 {
 	int		i;
 
@@ -31,8 +31,8 @@ static void			ft_round_five(t_integral *z, t_fractional *frac, t_format\
 	}
 }
 
-static void			ft_round_f(t_integral *z, t_fractional *frac, t_format\
-*info)
+static void			ft_round_f(t_integral *z, t_fractional *frac,\
+		t_format *info)
 {
 	int		i;
 

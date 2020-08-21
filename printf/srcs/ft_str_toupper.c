@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_tolower.c                                   :+:      :+:    :+:   */
+/*   ft_str_toupper.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 03:13:53 by blavonne          #+#    #+#             */
-/*   Updated: 2020/08/06 17:56:15 by blavonne         ###   ########.fr       */
+/*   Created: 2020/07/23 03:14:58 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/06 17:56:22 by blavonne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-void	ft_str_tolower(char *str)
+void	ft_str_toupper(char *str)
 {
 	int		i;
 
 	i = 0;
 	while (str && str[i])
 	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-			str[i] = (char)ft_tolower(str[i]);
+		if (str[i] >= 'a' && str[i] <= 'z')
+			str[i] = (char)ft_toupper(str[i]);
 		i++;
 	}
 }

@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 17:56:51 by blavonne          #+#    #+#             */
-/*   Updated: 2020/08/06 17:56:53 by blavonne         ###   ########.fr       */
+/*   Created: 2020/07/23 03:10:15 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/06 17:54:55 by blavonne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+void	*ft_memset(void *b, int c, size_t len)
 {
 	int		i;
+	char	*str;
 
 	i = 0;
-	while (src[i])
+	str = b;
+	while (i < (int)len)
 	{
-		dst[i] = src[i];
+		str[i] = (char)c;
 		i++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	return (b);
 }

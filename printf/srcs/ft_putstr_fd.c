@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 03:13:08 by blavonne          #+#    #+#             */
-/*   Updated: 2020/08/06 17:55:54 by blavonne         ###   ########.fr       */
+/*   Created: 2020/08/06 17:56:02 by blavonne          #+#    #+#             */
+/*   Updated: 2020/08/06 17:56:06 by blavonne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-void	ft_putstr(char const *s)
+void	ft_putstr_fd(char const *s, int fd)
 {
 	if (s && *s)
-		write(1, s, ft_strlen(s));
+		write(fd, s, ft_strlen(s));
 }
