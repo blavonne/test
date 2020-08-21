@@ -7,8 +7,8 @@
 # include <limits.h>
 
 # define BIGINT_SIZE	10
-# define V_SIZE			1u
-# define VARR_SIZE		1u
+# define V_SIZE			200u
+# define VARR_SIZE		30u
 
 # define RA		0b00000001u
 # define RB		0b00000010u
