@@ -38,7 +38,7 @@ int		check_command(char *cmd)
 	return (0);
 }
 
-int		check(int argc, char **argv)
+int		check(int argc, char **argv)//del
 {
 	t_stack	*a;
 	t_stack *b;
