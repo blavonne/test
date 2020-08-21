@@ -7,7 +7,6 @@ void	print_info(t_info *info)
 
 	i = 0;
 	arr = info->cmd_c->arr;
-//	ft_printf("Command line:\n");
 	while (i < info->cmd_c->size)
 	{
 		arr[i] == RB ? ft_printf("%s\n", "rb") : 0;
