@@ -136,8 +136,6 @@ void			all_to_a(t_stack **a, t_stack **b, t_info **m)
 				clean_and_exit(a, b, m, 'm');
 			ptr = ptr->next;
 		}
-		ft_printf("all_to_a.\n");
-		print_int_vector((*m)->count_steps_i);
 		shortest_way_index = find_min_index((*m)->count_steps_i);
 		if (shortest_way_index < 0)
 			clean_and_exit(a, b, m, 'm');

@@ -28,7 +28,7 @@ void		destroy_vector(t_vector **v)
 
 void		destroy_varr(t_info **m)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
 	if ((*m)->cmd_arr)
@@ -43,9 +43,6 @@ void		destroy_varr(t_info **m)
 
 void		destroy_main(t_info **m)
 {
-	size_t		i;
-
-	i = 0;
 	if ((*m))
 	{
 		destroy_vector(&(*m)->cmd_c);
