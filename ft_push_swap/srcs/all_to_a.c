@@ -88,8 +88,6 @@ int				reset_cmd_arr(t_info **m)
 	destroy_varr(m);
 	if (!((*m)->count_steps_i = create_vector()))
 		return (0);
-	if (!((*m)->cmd_arr = create_varr()))
-		return (0);
 	(*m)->arr_size = 1;
 	(*m)->arr_next = 0;
 //	while (i < (*m)->arr_next)

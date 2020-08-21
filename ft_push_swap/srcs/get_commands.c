@@ -40,6 +40,8 @@ int			sort_slice(t_stack **a, t_info **m)
 		return (1);
 	if (!(ft_isslice(*a)))
 		return (0);
+	if (!((*m)->cmd_arr = create_varr()))
+		return (0);
 	ra = rotate(a, m, "ra");
 	rra = rotate(a, m, "rra");
 	if (ra < rra)
