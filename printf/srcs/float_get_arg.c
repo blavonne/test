@@ -6,7 +6,7 @@
 /*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 17:58:55 by blavonne          #+#    #+#             */
-/*   Updated: 2020/08/22 01:28:22 by blavonne         ###   ########.fr       */
+/*   Updated: 2020/08/22 04:22:47 by blavonne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void			ft_round_f(t_integral *z, t_fractional *frac,\
 	}
 }
 
-char			*get_arg_f(t_format *info)
+char				*get_arg_f(t_format *info)
 {
 	t_integral		integral;
 	t_fractional	fractional;
