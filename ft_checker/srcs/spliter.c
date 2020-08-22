@@ -34,7 +34,9 @@ static char	set_delimiter(char *str)
 	i = 0;
 	if (!str)
 		return (0);
-	if (ft_issign(str[0]))
+	if (!ft_issign(str[0]) && !ft_isdigit(str[0]))
+		return (0);
+	else
 		i++;
 	while (str[i] && ft_isdigit(str[i]))
 		i++;
