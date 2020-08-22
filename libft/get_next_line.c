@@ -38,14 +38,14 @@ static t_buff	*find_fd(t_list **list, int fd)
 	return ((*list)->content);
 }
 
-static int		ft_read_line(char **ostatok, int fd, char **line)
+static int		ft_read_line(char **ostatok, int fd, char **line, size_t size)
 {
 	char	buff[BUFF_SIZE + 1];
 	char	*tmp;
 	char	*str;
-	size_t	size;
 
 	size = 1;
+	ft_bzero(buff, BUFF_SIZE + 1);
 	while (size)
 	{
 		if ((tmp = ft_strchr(*ostatok, '\n')))
@@ -112,7 +112,7 @@ int				get_next_line(const int fd, char **line)
 			return (-1);
 	if (!(*line = ft_strnew(0)))
 		return (-1);
-	if ((rd = ft_read_line(&(tmp->buff), fd, line)) <= 0)
+	if ((rd = ft_read_line(&(tmp->buff), fd, line, 0)) <= 0)
 		ft_del_fd(&head, fd);
 	return (rd);
 }
