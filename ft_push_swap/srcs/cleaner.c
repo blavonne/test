@@ -75,10 +75,3 @@ void		clean_and_exit(t_stack **a, t_stack **b, t_info **m,\
 	(m) && (*m) ? destroy_main(m) : 0;
 	put_errmsg_and_exit(option);
 }
-
-void		destroy_map(t_map **map)
-{
-	free((*map)->size);
-	free((*map)->begin);
-	free(*map);
-}

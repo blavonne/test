@@ -63,5 +63,6 @@ int			try_to_split(char *str, t_stack **stack)
 			push_in_stack(stack, get_number(res[i], stack));
 		i++;
 	}
+	clean_split(&res);
 	return (1);
 }

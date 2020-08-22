@@ -43,7 +43,7 @@ int		main(int argc, char **argv)
 	t_info	*info;
 
 	if (argc == 1)
-		put_errmsg_and_exit('a');
+		return (0);
 	a = read_argv(argc, argv);
 	b = NULL;
 	if (check_asc_order(a, b))

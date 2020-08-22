@@ -47,10 +47,6 @@ int			sort_slice(t_stack **a, t_info **m)
 	size_t	i;
 
 	i = 0;
-	if (check_asc_order((*a), 0))
-		return (1);
-	if (!(ft_isslice(*a)))
-		return (0);
 	if (!((*m)->cmd_arr = create_varr()))
 		return (0);
 	ra = rotate(a, m, "ra");
@@ -80,6 +76,10 @@ t_info		*get_commands(t_stack **a, t_stack **b)
 		clean_and_exit(a, b, 0, 'm');
 	all_to_b(a, b, &info);
 	all_to_a(a, b, &info);
+	if (check_asc_order((*a), 0))
+		return (info);
+	if (!(ft_isslice(*a)))
+		clean_and_exit(a, b, 0, 'm');
 	if (!sort_slice(a, &info))
 		clean_and_exit(a, b, &info, 'm');
 	return (info);

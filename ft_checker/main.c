@@ -20,7 +20,7 @@ int		main(int argc, char **argv)
 	int		count;
 
 	if (argc == 1)
-		put_errmsg_and_exit('d');
+		return (0);
 	a = read_argv(argc, argv);
 	b = NULL;
 	while ((count = get_next_line(0, &cmd)))

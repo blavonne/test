@@ -106,6 +106,7 @@ int					check_mid(t_stack *a, int middle);
 int					get_middle(t_stack **a);
 t_info				*get_commands(t_stack **a, t_stack **b);
 int					*timsort(int *arr, int size);
+t_map				*set_map(t_map *map, int i);
 int					*merge(int *arr, t_map **map);
 int					*insertion_sort(int *arr, t_map *map);
 void				all_to_a(t_stack **a, t_stack **b, t_info **m);

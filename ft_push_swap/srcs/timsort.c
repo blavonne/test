@@ -76,15 +76,6 @@ static int		set_end(int size, int minrun, int *arr, int end)
 	return (end);
 }
 
-static t_map	*set_map(t_map *map, int i)
-{
-	map->begin[i] = map->beg;
-	map->size[i] = map->end - map->beg + 1;
-	map->beg = map->end + 1;
-	map->end = map->beg + 1;
-	return (map);
-}
-
 int				*timsort(int *arr, int size)
 {
 	t_map	*map;
