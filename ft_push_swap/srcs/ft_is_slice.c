@@ -28,16 +28,6 @@ int		check_point(t_stack *a, t_stack *point, char order)
 	return (0);
 }
 
-//void	print_stack(t_stack *stack)
-//{
-//	while (stack)
-//	{
-//		ft_printf("%d ", stack->value);
-//		stack = stack->next;
-//	}
-//	ft_printf("\n");
-//}
-
 int		ft_isslice(t_stack *a)
 {
 	t_stack	*ptr;

@@ -117,7 +117,5 @@ int					cat_vectors(t_vector **dest, t_vector *src);
 void				optimize_way(t_vector *way);
 
 void				print_info(t_info *info);
-//void				print_stack(t_stack *stack);
-//void				print_vector(t_vector *way);//del;
 
 #endif
