@@ -44,7 +44,7 @@ static int		set_size(t_stack *a)
 	return (i);
 }
 
-int				get_middle(t_stack **a)
+int				get_middle(t_stack **a, t_stack **b, t_info **info)
 {
 	int		*arr;
 	int		middle;
@@ -59,7 +59,11 @@ int				get_middle(t_stack **a)
 		return (middle);
 	}
 	else
-		return (-1);
+	{
+		free(arr);
+		clean_and_exit(a, b, info, 0);
+		return (0);
+	}
 }
 
 int				check_mid(t_stack *a, int middle)

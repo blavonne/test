@@ -103,8 +103,7 @@ void			all_to_b(t_stack **a, t_stack **b, t_info **info)
 
 	while ((*a) && (*a)->next && (*a)->next->next && !(ft_isslice((*a))))
 	{
-		if ((middle_val = get_middle(a)) < 0)
-			clean_and_exit(a, b, 0, 'm');
+		middle_val = get_middle(a, b, info);
 		while (check_mid((*a), middle_val) && !(ft_isslice((*a))))
 		{
 			pb_forward(a, b, info, middle_val);

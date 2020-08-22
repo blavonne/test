@@ -18,8 +18,8 @@ add_executable(checker
         ft_push_swap/srcs/get_commands.c
         ft_push_swap/srcs/vector.c
         ft_push_swap/srcs/cleaner.c
-#        ft_push_swap/main.c
-        ft_checker/main.c
+        ft_push_swap/main.c
+#        ft_checker/main.c
         ft_checker/srcs/checker.c
         ft_push_swap/srcs/all_to_b.c
         ft_push_swap/srcs/middle_handler.c

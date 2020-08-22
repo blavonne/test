@@ -19,6 +19,8 @@ int		ft_isnumber(char *str)
 	i = 0;
 	while (str && str[i])
 	{
+		if (!i && ft_issign(str[i]))
+			i++;
 		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;

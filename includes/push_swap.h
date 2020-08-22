@@ -103,7 +103,7 @@ void				destroy_varr(t_info **m);
 
 void				all_to_b(t_stack **a, t_stack **b, t_info **info);
 int					check_mid(t_stack *a, int middle);
-int					get_middle(t_stack **a);
+int					get_middle(t_stack **a, t_stack **b, t_info **info);
 t_info				*get_commands(t_stack **a, t_stack **b);
 int					*timsort(int *arr, int size);
 t_map				*set_map(t_map *map, int i);
