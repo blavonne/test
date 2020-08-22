@@ -103,3 +103,29 @@ void			all_to_a(t_stack **a, t_stack **b, t_info **m)
 			all_to_a(a, b, m);
 	}
 }
+
+void			print_vector(t_vector *way)//del
+{
+	size_t			i;
+	unsigned char	*arr;
+
+	i = 0;
+	arr = way->arr;
+	ft_printf("====Vector command line is: ");
+	while (i < way->next)
+	{
+		arr[i] == RA ? ft_printf("ra ") : 0;
+		arr[i] == RB ? ft_printf("rb ") : 0;
+		arr[i] == RR ? ft_printf("rr ") : 0;
+		arr[i] == SA ? ft_printf("sa ") : 0;
+		arr[i] == SB ? ft_printf("sb ") : 0;
+		arr[i] == SS ? ft_printf("ss ") : 0;
+		arr[i] == PA ? ft_printf("pa ") : 0;
+		arr[i] == PB ? ft_printf("pb ") : 0;
+		arr[i] == RRA ? ft_printf("rra ") : 0;
+		arr[i] == RRB ? ft_printf("rrb ") : 0;
+		arr[i] == RRR ? ft_printf("rrr ") : 0;
+		i++;
+	}
+	ft_printf("\n");
+}

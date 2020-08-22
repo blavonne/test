@@ -23,7 +23,6 @@ char	*ft_itoa(int decimal)
 	temp = decimal;
 	while ((temp = temp / 10))
 		len++;
-	decimal < 0 ? len++ : 0;
 	if (!(res = ft_strnew(len)))
 		return (NULL);
 	decimal < 0 ? res[0] = '-' : 0;

@@ -35,7 +35,7 @@ static int		try_ra(t_stack *a, t_stack *ptr, t_vector **ra)
 	long long int	min;
 	int				i;
 
-	i = 1;
+	i = 0;
 	if (ptr && a)
 	{
 		min = ft_abs_ll(ptr->value - a->value);
@@ -44,12 +44,12 @@ static int		try_ra(t_stack *a, t_stack *ptr, t_vector **ra)
 	}
 	while (a && ptr)
 	{
+		i++;
 		if (ft_abs(ptr->value - a->value) < min)
 		{
 			ra_count = (ptr->value < a->value) ? i : i + 1;
 			min = ft_abs(ptr->value - a->value);
 		}
-		i++;
 		a = a->next;
 	}
 	return (try_to_push(ra_count, RA, ra));

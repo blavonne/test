@@ -14,8 +14,8 @@
 
 int					set_number(t_bigint *big, t_stack **stack)
 {
-	int		i;
-	int		res;
+	int					i;
+	long long int		res;
 
 	i = 1;
 	res = 0;
@@ -24,17 +24,15 @@ int					set_number(t_bigint *big, t_stack **stack)
 		clean_and_exit(stack, 0, 0, 'd');
 	while (i <= big->length)
 	{
-		if ((res == INT_MAX / 10 && ((big->sign != -1 && big->bigint[0] >\
-		INT_MAX % 10) || (big->sign == -1 && big->bigint[0] > INT_MIN % 10)))\
-		|| (res > INT_MAX / 10))
-			clean_and_exit(stack, 0, 0, 'd');
 		res *= 10;
 		res += big->bigint[big->length - i];
 		i++;
 	}
 	if (big->sign == -1)
 		res = -res;
-	return (res);
+	if (res > INT_MAX || res < INT_MIN)
+		return (0);
+	return ((int)res);
 }
 
 int					get_number(char *str, t_stack **stack)

@@ -63,7 +63,7 @@ static void		pb_back(t_stack **a, t_stack **b, t_info **info,\
 static void		sa(t_stack **a, t_stack **b, t_info **info)
 {
 	if ((*a) && (*a)->next && !(*a)->next->next && (*a)->value >\
-		(*a)->next->value && !(ft_isslice((*a))))
+		(*a)->next->value)
 	{
 		run_command("sa", a, b);
 		if (!push_in_vector(&(*info)->cmd_c, SA, sizeof(char)))

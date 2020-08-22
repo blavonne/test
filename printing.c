@@ -58,3 +58,13 @@ void			print_int_vector(t_vector *v)
 		ft_printf("\n");
 	}
 }
+
+void				print_stack(t_stack *stack)
+{
+	while (stack)
+	{
+		ft_printf("%d ", stack->value);
+		stack = stack->next;
+	}
+	ft_printf("\n");
+}

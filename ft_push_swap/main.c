@@ -36,6 +36,16 @@ void	print_info(t_info *info)
 	}
 }
 
+void				print_stack(t_stack *stack)//del
+{
+	while (stack)
+	{
+		ft_printf("%d ", stack->value);
+		stack = stack->next;
+	}
+	ft_printf("\n");
+}
+
 int		main(int argc, char **argv)
 {
 	t_stack	*a;
