@@ -89,3 +89,5 @@ fclean: clean
 	rm -rf $(CHECKER)
 	rm -rf $(PUSH_SWAP)
 re: fclean all
+
+.PHONY: all clean fclean re
