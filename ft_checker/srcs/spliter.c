@@ -32,8 +32,10 @@ static char	set_delimiter(char *str)
 	char	delimiter;
 
 	i = 0;
-	if (!str || !ft_isdigit(str[i]))
+	if (!str)
 		return (0);
+	if (ft_issign(str[0]))
+		i++;
 	while (str[i] && ft_isdigit(str[i]))
 		i++;
 	delimiter = str[i];
