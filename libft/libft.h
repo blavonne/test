@@ -19,7 +19,7 @@
 # include <limits.h>
 
 # define RADIX	"0123456789abcdef"
-# define BUFF_SIZE 10
+# define BUFF_SIZE 4096
 
 /*
 ** GNL......................................................................
