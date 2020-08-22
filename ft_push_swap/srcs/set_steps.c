@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 int				set_steps(t_stack *a, t_stack *b, t_stack *ptr, t_info **m)
 {

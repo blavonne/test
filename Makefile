@@ -70,7 +70,7 @@ $(PRINTF):
 # build checker-----------------------------------------------------------------
 $(CHECKER): $(LIBFT) $(PRINTF) $(C_OBJ)
 	gcc $(C_OBJ) -o $(CHECKER) $(I_FLAGS) $(FLAGS) $(L_FLAGS) $(P_FLAGS)
-%.o: %.c $(PS_INC)checker.h
+%.o: %.c $(PS_INC)push_swap.h
 	gcc -c $< -o $@ $(I_FLAGS) $(FLAGS)
 
 # build push swap---------------------------------------------------------------

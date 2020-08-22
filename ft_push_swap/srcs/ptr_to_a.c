@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 static int		try_to_push(int count, unsigned char cmd, t_vector **dest)
 {

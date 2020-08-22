@@ -9,7 +9,7 @@ include_directories(./printf/includes)
 add_subdirectory(./libft)
 add_subdirectory(./printf)
 add_executable(checker
-        includes/checker.h
+        includes/push_swap.h
         ft_checker/srcs/reader.c
         ft_checker/srcs/bigint_base.c
         ft_checker/srcs/commander.c

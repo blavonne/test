@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 static int		try_rb(t_stack *ptr, t_stack *b, t_vector **rb)
 {
