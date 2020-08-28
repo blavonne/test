@@ -64,9 +64,6 @@ static int		merge_commands(t_stack **a, t_stack **b, t_info **m,\
 
 int				reset_cmd_arr(t_info **m)
 {
-	size_t		i;
-
-	i = 0;
 	destroy_vector(&(*m)->count_steps_i);
 	destroy_varr(m);
 	if (!((*m)->count_steps_i = create_vector()))

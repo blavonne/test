@@ -41,7 +41,7 @@ typedef struct		s_vector
 	size_t			next;
 }					t_vector;
 
-typedef struct		s_main
+typedef struct		s_info
 {
 	t_vector		*cmd_c;
 	t_vector		*count_steps_i;
@@ -101,9 +101,11 @@ void				destroy_vector(t_vector **v);
 void				destroy_stack(t_stack **stack);
 void				destroy_varr(t_info **m);
 
+int					fast_changes(t_stack **a, t_stack **b, t_info **info);
 void				all_to_b(t_stack **a, t_stack **b, t_info **info);
 int					check_mid(t_stack *a, int middle);
 int					get_middle(t_stack **a, t_stack **b, t_info **info);
+int					set_size(t_stack *a);
 t_info				*get_commands(t_stack **a, t_stack **b);
 int					*timsort(int *arr, int size);
 t_map				*set_map(t_map *map, int i);

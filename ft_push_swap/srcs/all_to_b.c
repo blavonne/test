@@ -101,6 +101,11 @@ void			all_to_b(t_stack **a, t_stack **b, t_info **info)
 {
 	int				middle_val;
 
+	if (set_size((*a)) <= 5 && !(ft_isslice(*a)))
+	{
+		if (fast_changes(a, b, info))
+			return ;
+	}
 	while ((*a) && (*a)->next && (*a)->next->next && !(ft_isslice((*a))))
 	{
 		middle_val = get_middle(a, b, info);

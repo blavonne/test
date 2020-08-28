@@ -31,7 +31,7 @@ static int		*get_arr(t_stack **a, int size)
 	return (arr);
 }
 
-static int		set_size(t_stack *a)
+int				set_size(t_stack *a)
 {
 	int		i;
 

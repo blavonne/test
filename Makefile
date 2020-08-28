@@ -51,6 +51,7 @@ PS_SRC = $(PS_SRCS)all_to_a.c\
 	$(C_SRCS)bigint_base.c\
 	$(C_SRCS)spliter.c\
 	$(C_SRCS)checker.c\
+	$(PS_SRCS)small_sort.c\
 	$(PS_ROOT)main.c\
 
 C_OBJ = $(C_SRC:%.c=%.o)
